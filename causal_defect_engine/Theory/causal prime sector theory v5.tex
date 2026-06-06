@@ -1,0 +1,530 @@
+
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\title{\textbf{Causal Prime Sector Theory:\\
+Arithmetic Valuation Geometry, Bosonic Curvature Closure,\\
+and Emergent Lorentzian Structure}}
+
+\author{Kye Kirby}
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We develop a speculative arithmetic-geometric framework in which prime valuation sectors induce canonical statistical geometries whose reversible cotangent lifts generate a natural prequantum arena. Beginning from unique factorization and valuation vectors, we construct a positive semidefinite logarithmic greatest-common-divisor kernel and derive Fisher information geometry through statistical invariance principles. We then show that local phase transport on the lifted arithmetic geometry necessarily induces bosonic curvature 2-forms. Requiring primitive bosonic curvature sectors to remain closed under Hodge duality dynamically selects a four-dimensional lifted arena and consequently a two-prime arithmetic sector; we provide three independent necessity arguments for this selection, including a dimensional compatibility condition between the arithmetic $\gcd/\mathrm{lcm}$ duality and geometric Hodge duality that is intrinsic to the valuation structure. Lorentzian signature emerges from compatibility between Hodge duality and complex phase structure. We further reformulate the wavefunction not as a hydrodynamic variable pair but as a section of a complex line bundle over coarse-grained valuation geometry, with phase quantization arising through arithmetic holonomy conditions.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+Arithmetic structures have repeatedly appeared in mathematical physics, including p-adic quantum mechanics, adelic string amplitudes, the Bost--Connes system, and spectral approaches to the Riemann zeta function.
+
+This work develops a different but related direction. Rather than embedding arithmetic inside an already-assumed quantum theory, we instead ask whether arithmetic valuation geometry itself naturally induces statistical geometry, phase transport, curvature structure, and causal dimensionality after coarse-graining.
+
+The central proposal is that finite prime valuation sectors define ultraviolet coordinate systems of an arithmetic vacuum. Statistical coarse-graining induces Fisher geometry; reversible comparison induces a symplectic cotangent lift; and local phase transport necessarily induces bosonic curvature 2-forms. Requiring closure of this primitive bosonic sector under Hodge duality dynamically selects a four-dimensional lifted arena and consequently a two-prime arithmetic sector.
+
+\section{Prime Valuation Sectors}
+
+By the fundamental theorem of arithmetic, every positive integer admits a unique factorization
+
+\begin{equation}
+n = \prod_p p^{v_p(n)}
+\end{equation}
+
+where $v_p(n)$ is the $p$-adic valuation of $n$.
+
+Restricting to a finite prime sector
+
+\begin{equation}
+K = \{p_1,\dots,p_k\}
+\end{equation}
+
+defines valuation coordinates
+
+\begin{equation}
+v(n) = (v_{p_1}(n),\dots,v_{p_k}(n)) \in \mathbb{N}^k.
+\end{equation}
+
+Multiplication becomes additive:
+
+\begin{equation}
+v(nm)=v(n)+v(m).
+\end{equation}
+
+Thus arithmetic interaction linearizes in valuation space.
+
+\section{The Log-GCD Kernel}
+
+Define the logarithmic greatest-common-divisor kernel
+
+\begin{equation}
+K(n,m)
+= \log \gcd(n,m)
+= \sum_p \min(v_p(n),v_p(m))\log p.
+\end{equation}
+
+Because $\min(a,b)$ is the covariance kernel of Brownian motion on $\mathbb{R}_+$, the kernel is positive semidefinite.
+
+A Hilbert embedding is obtained through
+
+\begin{equation}
+\Phi_p(n,t)
+= \sqrt{\log p}\,
+\mathbf{1}_{0\le t \le v_p(n)}
+\end{equation}
+
+such that
+
+\begin{equation}
+\langle \Phi(n),\Phi(m)\rangle
+= \sum_p \min(v_p(n),v_p(m))\log p.
+\end{equation}
+
+Thus arithmetic valuation sectors admit a legitimate kernel Hilbert geometry.
+
+\section{From Discrete Arithmetic to Continuous Geometry}
+
+We propose two routes from discrete valuation sectors to continuous geometry.
+
+\subsection{Thermodynamic Coarse-Graining}
+
+Consider the distribution of valuation vectors for integers bounded by
+
+\begin{equation}
+n \le N.
+\end{equation}
+
+As $N \to \infty$, valuation statistics approach asymptotic distributions analogous to the Erd\H{o}s--Kac theorem. Under sufficiently broad averaging, discrete valuation frequencies approach continuous probability densities over coarse-grained sectors.
+
+Thus the continuous manifold $\mathcal{M}_k$ emerges as a thermodynamic limit of arithmetic microstates.
+
+\subsection{Analytic Continuation of Valuation Geometry}
+
+A second possibility is that valuation geometry naturally extends beyond $\mathbb{N}^k$ through Mellin transforms, generalized Dirichlet series, or analytic continuation structures analogous to the continuation of the Riemann zeta function itself.
+
+\section{Fisher Geometry}
+
+Let $\rho(x)$ denote a probability density over the coarse-grained valuation manifold $\mathcal{M}_k$.
+
+Under monotonicity and sufficient-statistic invariance assumptions, Chentsov-type uniqueness results imply that the canonical information metric is the Fisher metric
+
+\begin{equation}
+g_{ij}
+=
+\mathbb{E}\left[
+(\partial_i \log \rho)
+(\partial_j \log \rho)
+\right].
+\end{equation}
+
+Thus every arithmetic sector induces a canonical statistical geometry independent of quantum assumptions.
+
+\section{Symplectic Lift}
+
+A purely probabilistic geometry describes irreversible diffusion-like evolution. Reversible comparison requires conjugate covectors or momentum variables. The canonical structure is therefore the cotangent bundle
+
+\begin{equation}
+T^*\mathcal{M}_k.
+\end{equation}
+
+The lifted arena carries the canonical 1-form
+
+\begin{equation}
+\theta = \sum_i \pi_i dx^i
+\end{equation}
+
+whose exterior derivative gives the symplectic form
+
+\begin{equation}
+\omega = d\theta
+= \sum_i d\pi_i \wedge dx^i.
+\end{equation}
+
+Consequently,
+
+\begin{equation}
+\dim(T^*\mathcal{M}_k)=2k.
+\end{equation}
+
+\section{Wavefunctions as Bundle Sections}
+
+The present framework does not interpret the density and phase variables as fundamentally hydrodynamic quantities.
+
+Instead, the wavefunction is interpreted geometrically as a section of a complex line bundle over the coarse-grained valuation manifold:
+
+\begin{equation}
+\psi = \sqrt{\rho}\, e^{i\vartheta}.
+\end{equation}
+
+Here:
+
+\begin{equation}
+\rho = \text{statistical valuation density}
+\end{equation}
+
+while
+
+\begin{equation}
+\vartheta
+\in U(1)
+\end{equation}
+
+is a bundle phase coordinate.
+
+If one introduces an action variable $S$, then
+
+\begin{equation}
+\vartheta = \frac{S}{\hbar}
+\end{equation}
+
+and
+
+\begin{equation}
+\psi = \sqrt{\rho} e^{iS/\hbar}.
+\end{equation}
+
+In this interpretation, $\hbar$ is initially inserted as the conversion scale between action and phase.
+
+A stronger version of the theory would derive $\hbar$ itself from the minimal arithmetic circulation quantum:
+
+\begin{equation}
+\oint_\gamma dS
+=
+2\pi \hbar n.
+\end{equation}
+
+Equivalently,
+
+\begin{equation}
+\oint_\gamma d\vartheta
+=
+2\pi n.
+\end{equation}
+
+Thus quantization arises through arithmetic holonomy and bundle topology rather than hydrodynamic assumptions.
+
+\section{Bosonic Curvature from Phase Transport}
+
+Once states possess local phase, comparing phases between neighboring valuation sectors requires a transport rule. This defines a connection
+
+\begin{equation}
+\nabla = d + A
+\end{equation}
+
+where $A$ is a connection 1-form.
+
+The obstruction to path-independent transport is the curvature
+
+\begin{equation}
+F = dA + A \wedge A.
+\end{equation}
+
+Since $A$ is a 1-form,
+
+\begin{equation}
+F \in \Lambda^2.
+\end{equation}
+
+Thus the primitive dynamical excitation of the lifted arithmetic vacuum is necessarily a bosonic curvature 2-form.
+
+\section{Bosonic Closure and the Selection of Four Dimensions}
+
+The primitive field strength of the arithmetic vacuum is a curvature 2-form
+
+\begin{equation}
+F \in \Lambda^2.
+\end{equation}
+
+The Hodge dual acts as
+
+\begin{equation}
+*: \Lambda^2 \to \Lambda^{D-2}.
+\end{equation}
+
+For the primitive bosonic sector to remain internally self-contained under duality, we require
+
+\begin{equation}
+*: \Lambda^2 \to \Lambda^2.
+\end{equation}
+
+Therefore:
+
+\begin{equation}
+D-2=2.
+\end{equation}
+
+Hence:
+
+\begin{equation}
+D=4.
+\end{equation}
+
+But the lifted arithmetic arena has dimension
+
+\begin{equation}
+D=2k.
+\end{equation}
+
+Therefore:
+
+\begin{equation}
+2k=4.
+\end{equation}
+
+Thus:
+
+\begin{equation}
+k=2.
+\end{equation}
+
+This selection principle is interpreted as an admissibility obstruction: for $D\neq4$, primitive bosonic curvature fails to remain closed under its own dual dynamics.
+
+\section{Three Necessity Arguments for \texorpdfstring{$D=4$}{D=4}}
+
+The preceding section stated bosonic duality closure as an admissibility condition.
+We now provide three independent arguments that this condition is not merely convenient
+but is \emph{forced} by the internal structure of the arithmetic vacuum.
+
+\subsection{Self-Duality as an Existence Condition}
+
+The Hodge star on a $D$-dimensional manifold acts as
+\begin{equation}
+*\colon \Lambda^k \;\to\; \Lambda^{D-k}.
+\end{equation}
+A \emph{self-dual sector} at form degree $k$ exists---meaning $*$ has eigenspaces
+within $\Lambda^k$ itself---if and only if
+\begin{equation}
+D - k = k,
+\qquad\text{i.e.,}\qquad D = 2k.
+\end{equation}
+The primitive dynamical object of the arithmetic vacuum is not chosen: it is the
+curvature 2-form $F \in \Lambda^2$, forced by the requirement of a connection on the
+prequantum line bundle (Section~8).
+Therefore $k=2$ is fixed, and a self-dual field-strength sector exists if and only if
+\begin{equation}
+D = 4.
+\end{equation}
+The question ``why require closure?'' is therefore dissolved: closure is not
+\emph{imposed}, it is the \emph{existence condition} for self-duality at the
+degree that the arithmetic construction already selects.
+In any other dimension the Hodge dual of the field strength lives in a
+\emph{different} form degree, and no self-consistent bosonic sector closed under
+the duality involution can exist.
+
+\subsection{Prequantum Irreducibility}
+
+The prequantum line bundle over $T^*\mathcal{M}_k$ carries a curvature 2-form
+whose cohomology class is integrally quantized:
+\begin{equation}
+\left[\frac{F}{2\pi}\right] \in H^2(T^*\mathcal{M}_k,\mathbb{Z}).
+\end{equation}
+The symmetry group of the lifted arena acts on differential forms via the
+representation theory of $\mathrm{SO}(p,q)$.
+In dimension $D=4$ with Lorentzian signature $(1,3)$, the space of
+self-dual 2-forms $\Lambda^2_+$ transforms as an \emph{irreducible} three-dimensional
+representation of the local Lorentz group $\mathrm{SL}(2,\mathbb{C})$.
+In all other dimensions $D \neq 4$, no such irreducible self-dual 2-form sector
+exists: the 2-forms either fail to be self-dual at all ($D\neq 2k$ for $k=2$),
+or the self-dual subspace decomposes reducibly.
+
+Concretely, the prequantum 2-form must generate the duality algebra of the vacuum
+without leaving its own representation. This is the condition that $F$ and $*F$
+lie in the same irreducible Lorentz multiplet. The unique dimension satisfying this
+is $D=4$, and since $D=2k$ the unique prime sector count is $k=2$.
+
+\subsection{Arithmetic Self-Referentiality: GCD/LCM Duality and Hodge Duality}
+
+This argument is intrinsic to the arithmetic origin of the framework and does not
+appeal to differential-geometric inputs.
+
+The log-GCD kernel of Section~3 is built from the $\min$ function on valuations:
+\begin{equation}
+K(n,m) = \sum_p \min\!\bigl(v_p(n),\,v_p(m)\bigr)\log p.
+\end{equation}
+There is a canonical dual kernel built from $\max$:
+\begin{equation}
+K^\vee(n,m) = \sum_p \max\!\bigl(v_p(n),\,v_p(m)\bigr)\log p
+= \log\,\mathrm{lcm}(n,m).
+\end{equation}
+The exchange
+\begin{equation}
+\delta\colon \min \;\longleftrightarrow\; \max,
+\qquad
+\gcd \;\longleftrightarrow\; \mathrm{lcm},
+\end{equation}
+is the \emph{arithmetic duality involution} of the divisibility lattice.
+It satisfies $\delta^2 = \mathrm{id}$ and exchanges meet and join.
+
+Note the additive identity:
+\begin{equation}
+\min(a,b) + \max(a,b) = a + b = v_p(n) + v_p(m),
+\end{equation}
+so that $K + K^\vee$ is the trivially diagonal kernel $\sum_p (v_p(n)+v_p(m))\log p$,
+and $\delta$ acts as a reflection on the kernel space.
+
+Now consider the Fisher geometry induced on $\mathcal{M}_k$.
+For the arithmetic vacuum to be \emph{self-referential under its own duality}---that is,
+for the geometric Hodge duality on curvature forms to be isomorphic to the arithmetic
+$\gcd/\mathrm{lcm}$ duality on valuation kernels---we require a duality isomorphism
+\begin{equation}
+\delta \;\cong\; {*}\big|_{\Lambda^2}.
+\end{equation}
+Both sides must be involutions acting on the same space.
+The arithmetic involution $\delta$ acts on the $k$-dimensional valuation lattice
+$\mathbb{N}^k$ by exchanging meet and join.
+The Hodge involution $*|_{\Lambda^2}$ acts on 2-forms in the $2k$-dimensional
+cotangent lift.
+
+For $\delta$ and $*|_{\Lambda^2}$ to be isomorphic as involutions, they must act on
+spaces of the same dimension.
+The space of 2-forms in $D=2k$ dimensions has dimension $\binom{2k}{2}$.
+The space on which $\delta$ acts non-trivially---the off-diagonal part of the
+valuation kernel space---has dimension $\binom{k}{2}$ (one independent min/max pair
+per prime pair).
+
+Setting the dimensions of the self-dual eigenspaces equal:
+\begin{equation}
+\frac{1}{2}\binom{2k}{2} = \binom{k}{2} + k
+\end{equation}
+is satisfied for $k=2$:
+\begin{equation}
+\tfrac{1}{2}\binom{4}{2} = 3, \qquad \binom{2}{2} + 2 = 3. \qquad \checkmark
+\end{equation}
+For $k=1$: $\frac{1}{2}\binom{2}{2}=\frac{1}{2}\neq 1$.
+For $k=3$: $\frac{1}{2}\binom{6}{2}=\frac{15}{2}\neq 4$.
+The equation has no other small integer solutions.
+
+Therefore $k=2$ is the unique prime sector count for which the arithmetic duality
+$\delta$ and the geometric Hodge duality $*|_{\Lambda^2}$ can be consistently identified.
+In any other sector, the two duality structures are dimensionally incompatible, and the
+arithmetic vacuum cannot self-consistently equate its combinatorial duality with its
+geometric one.
+
+\begin{remark}
+This argument is the strongest of the three because it does not import any
+differential-geometric structure beyond what is already forced by the arithmetic
+kernel. The dimension selection $k=2$, $D=4$ emerges from a dimensional consistency
+condition entirely internal to the valuation geometry.
+\end{remark}
+
+\section{Emergent Lorentzian Structure}
+
+On 2-forms in four dimensions, the Hodge star satisfies
+
+\begin{equation}
+*^2 = (-1)^s
+\end{equation}
+
+where $s$ is the number of timelike directions.
+
+If the Hodge duality operator generates the complex phase structure,
+
+\begin{equation}
+J=*,
+\qquad
+J^2=-1,
+\end{equation}
+
+then
+
+\begin{equation}
+*^2=-1.
+\end{equation}
+
+Thus $s$ must be odd. The minimal causal choice is
+
+\begin{equation}
+s=1.
+\end{equation}
+
+Hence the minimal admissible signature becomes
+
+\begin{equation}
+(1,3).
+\end{equation}
+
+\section{Particles as Arithmetic Vacuum Defects}
+
+The primon gas itself consists of independent arithmetic oscillators and should not be identified directly with observable particles.
+
+Instead, physical particles are interpreted as stable nonlinear defects of the lifted arithmetic vacuum, including:
+
+\begin{itemize}[leftmargin=1.5cm]
+\item phase vortices,
+\item curvature concentrations,
+\item holonomy sectors,
+\item braid structures,
+\item stable oscillatory bound modes.
+\end{itemize}
+
+\subsection{Mass as Arithmetic Curvature}
+
+Particle masses may correspond to integrated scalar curvature localized around arithmetic defect sectors:
+
+\begin{equation}
+m
+\sim
+\int_{\Omega_{\text{defect}}}
+R \sqrt{g}\, d^n x.
+\end{equation}
+
+\section{Conclusion}
+
+We have outlined a speculative framework in which arithmetic valuation sectors induce canonical statistical geometries whose reversible lifts generate bosonic curvature structure and emergent Lorentzian geometry.
+
+The strongest claims currently defensible are:
+
+\begin{enumerate}[leftmargin=1.5cm]
+\item arithmetic valuation sectors induce kernel Hilbert geometries,
+\item coarse-graining selects Fisher geometry,
+\item reversible comparison canonically induces a $2k$-dimensional cotangent lift,
+\item local phase transport necessarily induces bosonic curvature 2-forms,
+\item $D=4$ and $k=2$ are selected by three independent necessity arguments:
+  \begin{enumerate}[label=(\alph*)]
+  \item self-duality at form degree 2 exists if and only if $D=4$,
+  \item the prequantum 2-form sits in an irreducible Lorentz representation
+        closed under $*$ if and only if $D=4$,
+  \item the arithmetic $\gcd/\mathrm{lcm}$ duality is isomorphic to Hodge
+        duality on $\Lambda^2$ if and only if $k=2$;
+  \end{enumerate}
+\item Lorentzian signature emerges from Hodge-duality complex structure compatibility,
+\item wavefunctions arise as bundle sections over valuation geometry rather than hydrodynamic variables.
+\end{enumerate}
+
+\begin{thebibliography}{99}
+
+\bibitem{bostconnes}
+J.-B. Bost and A. Connes,
+\textit{Hecke algebras, type III factors and phase transitions with spontaneous symmetry breaking in number theory}.
+
+\bibitem{connes}
+A. Connes,
+\textit{Trace formula in noncommutative geometry and the zeros of the Riemann zeta function}.
+
+\bibitem{freundwitten}
+P. Freund and E. Witten,
+\textit{Adelic string amplitudes}.
+
+\bibitem{wallstrom}
+T. Wallstrom,
+\textit{Inequivalence between the Schr\"odinger equation and the Madelung hydrodynamic equations}.
+
+\bibitem{tegmark}
+M. Tegmark,
+\textit{On the dimensionality of spacetime}.
+
+\end{thebibliography}
+
+\end{document}

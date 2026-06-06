@@ -1,0 +1,4 @@
+dataset,horizon,window,n_rows_X0,n_train,n_test,train_feature_start_t,train_feature_end_t,train_target_start_t,train_target_end_t,test_feature_start_t,test_feature_end_t,test_target_start_t,test_target_end_t,train_before_test_features,train_targets_end_before_test_features_start,feature_target_horizon,standardization_fit_on,encoder_fit_on,test_graph_uses
+plotly_stock_returns,1,0,899,539,180,0,538,1,539,539,718,540,719,True,False,1,train feature rows only,train feature rows only,test feature slice X_t only; target Y_t+h is label only
+plotly_stock_returns,1,1,899,629,180,0,628,1,629,629,808,630,809,True,False,1,train feature rows only,train feature rows only,test feature slice X_t only; target Y_t+h is label only
+plotly_stock_returns,1,2,899,719,180,0,718,1,719,719,898,720,899,True,False,1,train feature rows only,train feature rows only,test feature slice X_t only; target Y_t+h is label only

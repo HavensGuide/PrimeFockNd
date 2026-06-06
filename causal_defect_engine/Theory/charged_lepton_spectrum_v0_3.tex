@@ -1,0 +1,498 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{The Charged-Lepton Spectrum\\[6pt]
+\large $S_3$ structure, Koide equipartition, and the generation phase}
+
+\author{Kai Cobbs}
+\date{Standalone preprint v0.3\quad May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The companion paper \emph{Fisher-Frame Defects and Spinorial Matter} derives
+the electron mass $m_e=2m_P\exp(-32\pi^3/19)$ as a single charged spinorial
+defect, but does not fix the muon and tau. This paper addresses the
+charged-lepton mass \emph{ratios}. The naive route --- successive Dirichlet
+eigenvalues of one defect --- fails by two orders of magnitude. Instead the
+three generations are identified as the three components of an $S_3$ amplitude
+multiplet supported on the $k=3$ (three-prime) sector of the Arithmetic
+Vacuum, whose abstract automorphism group is $S_3$. With mass read as squared
+amplitude ($m\sim|\psi|^2$, the variable in which the $k=3$ Fisher--Rao metric
+linearizes to the round octant of the $2$-sphere), the natural carrier of the
+$S_3$ representation is
+$\sqrt m$. Two results follow. First, the empirical Koide relation
+$Q=(m_e+m_\mu+m_\tau)/(\sqrt{m_e}+\sqrt{m_\mu}+\sqrt{m_\tau})^2 = 0.666661$,
+equal to $2/3$ to $1.5\times10^{-5}$, is shown to be \emph{exactly} the
+statement that the amplitude sits at the canonical $S_3$ midpoint shell of the
+Fisher octant: the colatitude equidistant from the two extremal $S_3$ orbits
+(vertices, maximal hierarchy; edge midpoints, maximal pairing), whose
+colatitudes are proven to sum to exactly $90^\circ$, forcing the
+$45^\circ$/equipartition shell with no free parameter. We further prove an
+equivalence: Koide $Q=2/3$ is the vacuum if and only if the $k=3$ defect free
+energy is self-dual under the channel duality $I_{\mathbf 1}\leftrightarrow
+I_{\mathbf 2}$ (``channels equal'' $\leftrightarrow$ ``channels split''); the
+empirical exactness of Koide is then evidence that this duality is exact, and
+the dynamical gap is reduced to identifying it (four natural candidate dualities
+are excluded). Second, the residual
+generation phase is measured to be $\phi=0.222231\pm0.000008$ rad, consistent
+with $2/9=(k-1)/k^2$ at $k=3$ to $1.0\sigma$, while the main competing value
+$1/(2\sqrt5)$ is excluded at $163\sigma$. Setting $(k,\phi)=(\sqrt2,2/9)$
+reproduces all three masses to better than $0.006\%$. We show the phase is a
+rigid degeneracy-lifting rotation and prove an obstruction theorem: $\phi=2/9$
+\emph{cannot} arise as the vacuum angle of any $S_3$-invariant potential,
+because every such invariant depends on the standard-plane angle only through
+$\cos(3\psi)$, redirecting the search for its origin to a logarithmic/RG
+ratio. The framework predicts, for structural reasons, that leptons are
+Koide-exact while quarks are not. Open problems and a near-term falsification
+handle (improved $m_\tau$) are stated precisely.
+\end{abstract}
+
+\tableofcontents
+
+%==============================================================
+\section{The problem and the failure of the naive ladder}
+%==============================================================
+
+The companion Fisher-Frame paper produces the electron as a stable charged
+$\mathbb{Z}_2$ spinorial defect with mass
+\begin{equation}
+m_e = 2\,m_P\exp\!\Bigl(-\tfrac{32\pi^3}{19}\Bigr) = 0.5104\ \mathrm{MeV},
+\end{equation}
+the prefactor $2$ being the first Dirichlet eigenvalue $\lambda_1$ on the
+hemisphere. The obvious extension --- assigning the muon and tau to higher
+Dirichlet eigenvalues $\lambda\in\{6,12\}$ of the same defect --- gives
+$m_\mu/m_e\sim\sqrt{3},\sqrt{6}$, i.e.\ $\sim1.7,2.4$, against the empirical
+\begin{equation}
+\frac{m_\mu}{m_e}=206.768,\qquad \frac{m_\tau}{m_e}=3477.23.
+\end{equation}
+The single-defect eigenvalue ladder fails by two orders of magnitude. The
+mass law is exponential, so a factor of $207$ is a modest \emph{additive}
+shift $\delta_\mu=\ln(m_\mu/m_e)=5.332$ in an exponent of size $\sim52$; the
+generations are near-degenerate, split by a sub-leading mechanism, not three
+unrelated eigenvalues. This motivates treating them as one multiplet.
+
+%==============================================================
+\section{The $S_3$ amplitude multiplet}
+%==============================================================
+
+\subsection{Why $\sqrt m$, and why $S_3$}
+
+In the Fisher-frame/symplectic-lift picture, a defect carries an amplitude
+$\psi$ and its energy (mass) scales as $m\sim|\psi|^2$ (the same
+$\rho=|\psi|^2$ used in the gravity sector's Madelung reduction). The object
+transforming linearly under an internal symmetry acting on amplitudes is
+therefore $\sqrt m\sim|\psi|$. This is not merely a convention: the $k=3$
+sector's state space is the simplex of probability distributions
+$p=(p_1,p_2,p_3)$ over the three prime channels, and the Fisher--Rao metric on
+the simplex is, in the amplitude coordinates $a_i=\sqrt{p_i}$, exactly the
+round metric on the positive octant of the unit $2$-sphere,
+$\sum_i a_i^2=1$. The Fisher geometry of the three-prime sector
+\emph{linearizes to the sphere precisely in the variable $\sqrt m$}, which is
+why $\sqrt m$ --- not $m$ --- is the carrier of the $S_3$ representation. The
+three-prime ($k=3$) sector has abstract automorphism group
+$\mathrm{Aut}_{\mathrm{abs}}=S_3$ (Physical Sector, Open Problem 11.3), acting
+as the symmetry group of the spherical octant. We posit that the three charged
+leptons are the three components of the $S_3$ amplitude triplet
+\begin{equation}
+\boldsymbol a = (\sqrt{m_e},\sqrt{m_\mu},\sqrt{m_\tau})\in\mathbb{R}^3,
+\end{equation}
+a point of the Fisher octant (up to overall scale), on which $S_3$ acts by
+permutation. The democratic axis $(1,1,1)/\sqrt3$ is the octant centre.
+
+\subsection{Representation decomposition}
+
+Under $S_3$, $\mathbb{R}^3=\mathbf 1\oplus\mathbf 2$ (trivial/democratic plus
+two-dimensional standard rep), with projections
+\begin{equation}
+\boldsymbol a_{\mathbf 1}=M(1,1,1),\quad M=\tfrac13\textstyle\sum_n\sqrt{m_n},
+\qquad \boldsymbol a_{\mathbf 2}=\boldsymbol a-\boldsymbol a_{\mathbf 1}.
+\end{equation}
+Numerically (PDG pole masses),
+$|\boldsymbol a_{\mathbf 1}|=M\sqrt3=30.6843$ and
+$|\boldsymbol a_{\mathbf 2}|=30.6840$, so
+$|\boldsymbol a_{\mathbf 2}|/|\boldsymbol a_{\mathbf 1}|=0.999991$.
+
+%==============================================================
+\section{Koide as $S_3$ equipartition}
+%==============================================================
+
+\subsection{Exact reduction}
+
+Parametrize the amplitude in the general $S_3$-symmetric form
+\begin{equation}
+\sqrt{m_n}=M\bigl(1+k\cos\phi_n\bigr),\qquad
+\phi_n=\theta_0+\tfrac{2\pi n}{3},\quad n=0,1,2,
+\label{eq:foot}
+\end{equation}
+with $M>0$, $k\ge0$. The identities $\sum_n\cos\phi_n=0$ and
+$\sum_n\cos^2\phi_n=\tfrac32$ hold for every $\theta_0$, giving
+$\sum_n\sqrt{m_n}=3M$ and $\sum_n m_n=3M^2(1+\tfrac{k^2}{2})$.
+
+\begin{proposition}[Koide $=$ equipartition]
+\label{prop:koide}
+The Koide quotient is
+\begin{equation}
+Q=\frac{\sum_n m_n}{\bigl(\sum_n\sqrt{m_n}\bigr)^2}=\frac{1+k^2/2}{3},
+\end{equation}
+so that $Q=\tfrac23$ if and only if $k=\sqrt2$, equivalently
+$|\boldsymbol a_{\mathbf 1}|=|\boldsymbol a_{\mathbf 2}|$, equivalently the
+amplitude $\boldsymbol a$ makes a $45^\circ$ angle with the democratic axis.
+\end{proposition}
+
+\begin{proof}
+Direct from the two identities above. For the geometric form,
+$\cos^2\theta=|\boldsymbol a_{\mathbf 1}|^2/|\boldsymbol a|^2
+=(\sum\sqrt{m_n})^2/(3\sum m_n)=1/(3Q)$, so $Q=2/3\Leftrightarrow
+\cos^2\theta=1/2\Leftrightarrow\theta=45^\circ\Leftrightarrow
+|\boldsymbol a_{\mathbf 1}|=|\boldsymbol a_{\mathbf 2}|$.
+\end{proof}
+
+The empirical value $Q=0.666661$ corresponds to $\theta=44.9997^\circ$. The
+entire content of Koide is the single condition $k=\sqrt2$: the
+$S_3$-symmetric (singlet) and $S_3$-breaking (standard) parts of the amplitude
+have equal norm.
+
+\subsection{What forces $k=\sqrt2$: the canonical midpoint shell}
+
+On the Fisher octant, the equipartition condition has an exact, dynamics-free
+characterization in terms of the $S_3$ orbit structure of the boundary. Let
+$\Theta$ denote the colatitude of the amplitude measured from the democratic
+axis (octant centre), so $I_{\mathbf 1}=\cos^2\Theta$ and
+$I_{\mathbf 2}=\sin^2\Theta$, and $k=\sqrt2\Leftrightarrow\Theta=45^\circ$. The
+octant boundary carries two distinguished $S_3$ orbits of extremal points:
+\begin{itemize}
+\item the \emph{vertices} $(1,0,0)$ and permutations --- one prime channel
+saturated, maximal generation hierarchy; and
+\item the \emph{edge midpoints} $(1,1,0)/\sqrt2$ and permutations --- two
+channels equal, one empty.
+\end{itemize}
+
+\begin{theorem}[Equipartition is the $S_3$-canonical midpoint shell]
+\label{thm:midpoint}
+Let $\Theta_v$ and $\Theta_e$ be the colatitudes (from the democratic axis) of
+the vertex orbit and the edge-midpoint orbit of the Fisher octant. Then
+\begin{equation}
+\cos\Theta_v=\tfrac{1}{\sqrt3},\quad \cos\Theta_e=\sqrt{\tfrac23},\qquad
+\Theta_v+\Theta_e=\frac{\pi}{2}\ \text{exactly},
+\end{equation}
+so their midpoint is $\tfrac12(\Theta_v+\Theta_e)=45^\circ$. Hence the
+equipartition shell $\Theta=45^\circ$ (Koide $Q=2/3$) is the unique colatitude
+equidistant from the two extremal $S_3$ orbits --- the canonical midpoint
+shell between maximal hierarchy (vertices) and maximal pairing (edges).
+\end{theorem}
+
+\begin{proof}
+$\cos\Theta_v=(1,1,1)\!\cdot\!(1,0,0)/\sqrt3=1/\sqrt3$, giving
+$\sin\Theta_v=\sqrt{2/3}$. $\cos\Theta_e=(1,1,1)\!\cdot\!(1,1,0)/(\sqrt3\sqrt2)
+=\sqrt{2/3}$. Thus $\cos\Theta_e=\sin\Theta_v$, i.e.\
+$\Theta_e=\tfrac{\pi}{2}-\Theta_v$, so $\Theta_v+\Theta_e=\tfrac{\pi}{2}$ and
+the midpoint is $45^\circ$.
+\end{proof}
+
+This upgrades the status of Koide from a tuned coincidence to a structural
+characterization: $45^\circ$ is forced by the octant geometry alone, with no
+free parameter, as the $S_3$-symmetric halfway shell. Equivalently, defining
+the involution $C:\Theta\mapsto\tfrac{\pi}{2}-\Theta$ (acting trivially on the
+azimuth), $C$ exchanges the vertex shell with the edge shell, and the
+equipartition locus is exactly the fixed shell of $C$. This is the precise
+form of the singlet$\leftrightarrow$standard self-duality
+($I_{\mathbf 1}\leftrightarrow I_{\mathbf 2}$):
+
+\begin{proposition}[Self-duality form]
+\label{prop:selfdual}
+The colatitude reflection $C:\Theta\mapsto\tfrac{\pi}{2}-\Theta$ exchanges
+$I_{\mathbf 1}\leftrightarrow I_{\mathbf 2}$ and swaps the two extremal $S_3$
+orbits; its fixed shell is $\Theta=45^\circ$, i.e.\ $k=\sqrt2$, i.e.\
+Koide $Q=2/3$.
+\end{proposition}
+
+This is the same type of selection principle as the programme's other balance
+points: the self-dual CP angle $\Theta=\pi$; the equal phase-split
+$\rho_0=\tfrac12$ between the $\Theta$-term and the spin-$\tfrac12$ Berry
+phase; and the spectral balance $g_0^2=J_{\min}^2/S_{\mathrm{esc}}$ that fixes
+the gauge coupling.
+
+\subsection{Dynamical selection of the shell}
+\label{sec:dynamical}
+
+Theorem~\ref{thm:midpoint} characterizes the Koide shell kinematically. The
+remaining question is whether the $k=3$ defect dynamics \emph{selects} it as
+the ground state. Here the round geometry of the Fisher--Rao octant plays a
+decisive and clarifying role.
+
+\begin{lemma}[Quadratic flatness]
+\label{lem:flat}
+At quadratic order the colatitude $\Theta$ is a flat direction. The only
+quadratic $S_3$-invariant of a unit amplitude is $|\boldsymbol a|^2=1$
+(constant on the sphere), so no quadratic potential distinguishes colatitudes;
+any selection of $\Theta$ must come from the cubic ($\mathbb{Z}_3$-clock)
+invariant or higher.
+\end{lemma}
+
+With the azimuth locked by the $\mathbb{Z}_3$ clock (Theorem~\ref{thm:obstruction}
+below), an $S_3$-invariant free energy reduces to a function $F(I_{\mathbf 1})$
+of the singlet content $I_{\mathbf 1}=\cos^2\Theta\in[\tfrac13,1]$ alone
+($I_{\mathbf 1}=1$ at the octant centre, $\tfrac13$ at a vertex, $\tfrac12$ at
+the Koide shell). This yields a clean equivalence.
+
+\begin{theorem}[Koide $\iff$ $I_{\mathbf 1}\!\leftrightarrow\!I_{\mathbf 2}$ self-duality of the free energy]
+\label{thm:equiv}
+An $S_3$-invariant defect free energy $F(I_{\mathbf 1})$ has a stationary point
+at the Koide shell $I_{\mathbf 1}=I_{\mathbf 2}=\tfrac12$ if and only if
+$F'(\tfrac12)=0$. In particular, if $F$ is invariant under the duality
+$C:I_{\mathbf 1}\leftrightarrow I_{\mathbf 2}$ (equivalently $F(I_{\mathbf 1})
+=F(1-I_{\mathbf 1})$), then $F'(\tfrac12)=0$ automatically and the shell is
+stationary. Conversely, a generic $F$ without this symmetry is stationary
+elsewhere (at the centre or a vertex). Hence
+\begin{equation}
+\text{Koide } Q=\tfrac23 \text{ is the vacuum}
+\iff
+\text{the } k=3 \text{ free energy is } C\text{-self-dual.}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Stationarity at $\tfrac12$ is $F'(\tfrac12)=0$ by definition. If
+$F(I_{\mathbf 1})=F(1-I_{\mathbf 1})$ then $F'(I_{\mathbf 1})=-F'(1-I_{\mathbf 1})$,
+so $F'(\tfrac12)=-F'(\tfrac12)=0$. The converse direction (genericity) follows
+because $F'(\tfrac12)=0$ is one real condition, satisfied automatically on the
+$C$-symmetric subspace and only accidentally off it.
+\end{proof}
+
+This inverts the logic productively. The empirical exactness of Koide
+($Q=2/3$ to $1.5\times10^{-5}$) is, by Theorem~\ref{thm:equiv}, direct
+evidence that the $k=3$ defect free energy possesses an \emph{exact}
+$C$-duality $I_{\mathbf 1}\leftrightarrow I_{\mathbf 2}$ --- a particle/hole or
+occupation duality on the three prime channels, exchanging ``channels equal''
+with ``channels maximally split.'' We have therefore reduced the dynamical
+question to a single sharp statement: \emph{identify the exact
+$C$-duality of the $k=3$ Fisher action.}
+
+\medskip\noindent\textbf{Candidate dualities tested and excluded.} The
+following natural involutions all fail to be the required $C$-duality (none has
+the $45^\circ$ shell as its fixed/self-dual locus): the global spinorial
+$\mathbb{Z}_2$ monodromy (acts trivially on amplitude magnitudes); the
+$S_3$-internal transposition (fixes a $2$-plane, not the shell); the
+probabilistic complement $p_i\mapsto(1-p_i)/2$ (fixes only the centre); and the
+$\mathbb{Z}_3$ discrete Fourier transform (which elegantly swaps centre
+$\leftrightarrow$ vertex --- the right \emph{qualitative} behaviour --- but
+whose self-dual colatitude is $27.4^\circ$, not $45^\circ$). The variational
+restatement is equally clean: several natural functionals ($I_{\mathbf 1}
+I_{\mathbf 2}$, the binary entropy $-I_{\mathbf 1}\ln I_{\mathbf 1}
+-I_{\mathbf 2}\ln I_{\mathbf 2}$, and $I_{\mathbf 1}^2+I_{\mathbf 2}^2$) are
+all extremized at exactly $45^\circ$, but each is manifestly $C$-symmetric, so
+each \emph{presupposes} rather than derives the duality.
+
+\medskip\noindent\textbf{Status.} The gap is now sharp and well-posed, not
+vague: Theorem~\ref{thm:equiv} reduces ``derive Koide'' to ``exhibit the exact
+$C$-duality of the $k=3$ action,'' and the data guarantees such a duality
+exists and is exact. Identifying it is the principal open problem
+(Section~\ref{sec:open}).
+
+%==============================================================
+\section{The generation phase}
+\label{sec:phase}
+%==============================================================
+
+\subsection{Empirical determination}
+
+After $k=\sqrt2$ is imposed, the spectrum depends on the phase $\theta_0$ and
+the scale $M$. Writing $\phi\equiv\theta_0-\tfrac{2\pi}{3}$ and propagating
+PDG mass uncertainties by Monte Carlo (dominant source: $m_\tau$, uncertainty
+$\sim0.12$ MeV), we obtain
+\begin{equation}
+\phi=0.222231\pm0.000008\ \mathrm{rad}.
+\end{equation}
+
+\begin{center}
+\begin{tabular}{lll}\toprule
+Candidate & Value (rad) & Deviation\\\midrule
+$2/9$ & $0.222222$ & $\mathbf{1.0\,\sigma}$\\
+$1/(2\sqrt5)$ (Brannen) & $0.223607$ & $163\,\sigma$ (excluded)\\
+$\pi/14$ & $0.224399$ & $271\,\sigma$ (excluded)\\
+$7\pi/99$ & $0.222133$ & $12\,\sigma$ (excluded)\\\bottomrule
+\end{tabular}
+\end{center}
+
+The value $\phi=2/9$ fits at $1.0\sigma$; the main competing closed form is
+excluded at $163\sigma$; and no rational multiple of $\pi$ fits within
+$2\sigma$. Imposing $(k,\phi)=(\sqrt2,2/9)$ reproduces all three masses to
+better than $0.006\%$:
+
+\begin{center}
+\begin{tabular}{llll}\toprule
+ & predicted (MeV) & actual (MeV) & rel.\ error\\\midrule
+$m_e$ & $0.51100$ & $0.51100$ & $<10^{-4}$\\
+$m_\mu$ & $105.653$ & $105.658$ & $-0.005\%$\\
+$m_\tau$ & $1776.88$ & $1776.86$ & $+0.001\%$\\\bottomrule
+\end{tabular}
+\end{center}
+
+Structurally $2/9=(k-1)/k^2=2/k^2$ at $k=3$ (these coincide only at $k=3$),
+built from the sector index and the standard-rep dimension.
+
+\subsection{What the phase is}
+
+\begin{proposition}[Degeneracy lifting]
+At $\phi=0$ the configuration \eqref{eq:foot} with $k=\sqrt2$ has two
+degenerate generations, with amplitudes $M(1+\sqrt2)$ and a degenerate pair
+$M(1-\tfrac{\sqrt2}{2})$. The physical configuration is the rigid rotation of
+the whole triplet by $\phi$; the rotation lifts the two-fold degeneracy.
+\end{proposition}
+
+Thus $\phi$ is the degeneracy-splitting parameter of the generation sector,
+not a free orientation.
+
+\begin{theorem}[$S_3$ angular obstruction]
+\label{thm:obstruction}
+The phase $\phi=2/9$ rad cannot arise as the vacuum angle of any
+$S_3$-invariant potential. Every $S_3$ invariant depends on the standard-plane
+angle $\psi$ only through $\cos(3\psi)$ (the $\mathbb{Z}_3$ clock term
+$x^3-3xy^2$), so the stationary points of any $S_3$-invariant potential occur
+at $\psi$ equal to integer multiples of $60^\circ$. The observed phase lies
+$12.73^\circ=2/9$ rad off the $60^\circ$-lattice.
+\end{theorem}
+
+\begin{proof}
+The only angular dependence available to an $S_3$-invariant function on the
+standard plane is through the real cubic $\mathrm{Re}((x+iy)^3)=
+\rho^3\cos(3\psi)$ and its powers; $d/d\psi\,[\cos(3\psi)]=-3\sin(3\psi)$
+vanishes precisely at $3\psi\in\pi\mathbb{Z}$, i.e.\ $\psi\in
+60^\circ\mathbb{Z}$. The observed standard-plane angle is not on this lattice.
+\end{proof}
+
+Theorem~\ref{thm:obstruction} eliminates the most natural mechanism and, taken
+with the fact that $\phi$ is a rational number of \emph{radians} (not of
+$\pi$, as a geometric angle would be), points the search for the origin of
+$2/9$ toward a non-angular logarithmic/RG ratio in the $k=3$ exponent
+structure.
+
+\subsection{The democratic scale}
+
+The overall scale is $M^2=313.84$ MeV $=2m_P\exp(-E_M)$ with $E_M=45.80$, a
+second dimensional-transmutation scale shifted from the electron exponent
+$E_e=52.22$ by $6.42$ (effective one-loop coefficient $b_0^{(M)}=7.22$ versus
+the electron's $19/3$). It is not derived here; it requires the explicit
+$k=3$-sector beta function and BPS condition, the same calculation type as
+Fisher-Frame \S13.
+
+%==============================================================
+\section{The quark sector: a structural prediction}
+%==============================================================
+
+If equipartition were universal, quarks would also sit at $k=\sqrt2$. They do
+not: with running masses the effective values are $k^2_{\mathrm{up}}\approx
+3.09$ and $k^2_{\mathrm{down}}\approx2.39$, neither equal to $2$. This is the
+known failure of naive Koide for quarks, and here it is consistent with the
+framework rather than a problem for it: leptons are the clean $k=3$ spinorial
+sector and sit at equipartition, while quarks additionally carry $SU(3)_c$ ---
+itself the $k=3$-internal gauge structure (Physical Sector, Open Problem
+11.3) --- which distorts the amplitude away from equipartition. The framework
+therefore predicts, for a structural reason, that leptons are Koide-exact and
+quarks are not, and it offers the quark deviations
+$k^2_{\mathrm{up}},k^2_{\mathrm{down}}$ as a future quantitative target
+computable from the colour coupling.
+
+%==============================================================
+\section{Summary, status, and open problems}
+\label{sec:open}
+%==============================================================
+
+The charged-lepton spectrum, three free parameters in the Standard Model, is
+reduced to:
+\begin{enumerate}
+\item \textbf{Equipartition $k=\sqrt2$} (Koide $Q=2/3$): exact and
+parameter-free, shown to be the canonical $S_3$ midpoint shell of the Fisher
+octant --- the colatitude equidistant from the vertex and edge orbits, whose
+colatitudes sum to exactly $90^\circ$ (Theorem~\ref{thm:midpoint},
+Propositions~\ref{prop:koide}, \ref{prop:selfdual});
+\item \textbf{Generation phase $\phi=2/9$}: empirically $1.0\sigma$, the
+competing value excluded at $163\sigma$, structurally $(k-1)/k^2$ at $k=3$,
+proven not to be an $S_3$ vacuum angle (Theorem~\ref{thm:obstruction});
+\item \textbf{Democratic scale $M$}: one undetermined dimensional-transmutation
+scale.
+\end{enumerate}
+This explains the Koide coincidence as representation balance --- something the
+Standard Model does not do --- and explains quark non-Koide as $SU(3)_c$
+distortion.
+
+\medskip\noindent\textbf{This is a structural characterization plus a sharp
+prediction, not yet a closed derivation.} What remains, in priority order:
+\begin{enumerate}
+\item \textbf{[Critical]} Exhibit the exact $I_{\mathbf 1}\leftrightarrow
+I_{\mathbf 2}$ duality $C$ of the $k=3$ Fisher action.
+Theorem~\ref{thm:equiv} reduces ``derive Koide'' to exactly this, and the
+empirical exactness of $Q=2/3$ guarantees the duality exists and is exact; the
+task is to identify it. Four natural candidates have been excluded (global
+spinorial $\mathbb{Z}_2$, $S_3$-internal transposition, probabilistic
+complement, and the $\mathbb{Z}_3$ DFT --- the last with the correct
+centre$\leftrightarrow$vertex behaviour but self-dual colatitude $27.4^\circ$
+rather than $45^\circ$), so the duality is a genuine, as-yet-unidentified
+structure of the channel dynamics, not one of the obvious involutions.
+\item Find $\phi=2/9$ as a logarithmic/RG ratio (not an angle) in the $k=3$
+exponent structure; Theorem~\ref{thm:obstruction} shows this is the right
+place to look. (Tested and excluded: Shannon channel entropy $0.2186$, and
+RG running between pole and high scales, whose shifts exceed the $9\times
+10^{-6}$ gap to $2/9$.)
+\item Compute the $k=3$ dimensional-transmutation scale $M$ by the
+Fisher-Frame \S13 method applied to three primes.
+\item Compute the $SU(3)_c$ distortion of quark equipartition and predict
+$k^2_{\mathrm{up}},k^2_{\mathrm{down}}$.
+\end{enumerate}
+
+\medskip\noindent\textbf{Falsification handle.} Unlike postdictions of known
+constants, $\phi=2/9$ is a prediction at the edge of current precision: as
+$m_\tau$ is measured more precisely (Belle II, a tau-charm factory), $\phi$
+must converge to $0.2222$, not to $0.2236$. A few-fold improvement in the tau
+mass will confirm or exclude the result.
+
+\medskip\noindent\textbf{Methodological note.} No quantity was tuned: $k=\sqrt2$
+and $\phi=2/9$ are read off the data and tested against structural candidates.
+The $1.0\sigma$ versus $163\sigma$ separation is a feature of the data, not a
+choice, and the $60^\circ$ obstruction is a genuine negative result that
+constrains the mechanism.
+
+%==============================================================
+\appendix
+\section{Numerical verification}
+%==============================================================
+
+All values use PDG central pole masses $m_e=0.51099895$,
+$m_\mu=105.6583755$, $m_\tau=1776.86$ MeV.
+\begin{itemize}
+\item Koide quotient $Q=0.666661$; democratic-axis angle $44.9997^\circ$; vertex colatitude $54.7356^\circ$, edge colatitude $35.2644^\circ$, sum $=90^\circ$ exactly (midpoint $45^\circ$);
+$|\boldsymbol a_{\mathbf 2}|/|\boldsymbol a_{\mathbf 1}|=0.999991$.
+\item $Q=(1+k^2/2)/3$ verified symbolically.
+\item Generic $S_3$ quartic potential: nine couplings; equipartition only on
+the self-dual locus.
+\item Phase $\phi=0.222231\pm0.000008$ rad ($2\times10^4$ Monte-Carlo samples,
+PDG errors, $m_\tau$-dominated).
+\item Obstruction: every $S_3$ invariant $\propto\cos(3\psi)$; stationary at
+$\psi\in60^\circ\mathbb{Z}$; observed angle off-lattice by $2/9$ rad.
+\item Mass reconstruction from $(k=\sqrt2,\phi=2/9,M^2=313.84\,\mathrm{MeV})$
+accurate to $<0.006\%$ on all three masses.
+\item Flat-direction check: only quadratic $S_3$ invariant is $|a|^2$; colatitude selection requires cubic or higher (Lemma~\ref{lem:flat}).
+\item Functionals extremized at $45^\circ$: $I_1 I_2$, binary entropy, $I_1^2+I_2^2$ (all $C$-symmetric). Cubic $e_3=a_1a_2a_3$ and maximal-spread both extremize at the vertex $54.7356^\circ$, not $45^\circ$.
+\item $\mathbb{Z}_3$ DFT maps democratic centre to vertex $(1,0,0)$ exactly; its self-dual colatitude is $27.37^\circ\neq45^\circ$.
+\item Quark effective values $k^2_{\mathrm{up}}\approx3.09$,
+$k^2_{\mathrm{down}}\approx2.39$ (running masses, scheme-dependent).
+\end{itemize}
+
+\end{document}

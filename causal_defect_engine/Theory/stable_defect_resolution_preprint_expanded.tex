@@ -1,0 +1,936 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{mathrsfs}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\hypersetup{colorlinks=true, linkcolor=blue!50!black, citecolor=blue!50!black, urlcolor=blue!50!black}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{principle}[theorem]{Principle}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Def}{Def}
+\DeclareMathOperator{\Anom}{Anom}
+\DeclareMathOperator{\Indec}{Indec}
+\DeclareMathOperator{\Hol}{Hol}
+\DeclareMathOperator{\SF}{SF}
+\DeclareMathOperator{\PF}{PF}
+\DeclareMathOperator{\LP}{LP}
+\DeclareMathOperator{\Ree}{Re}
+\DeclareMathOperator{\Imm}{Im}
+\newcommand{\Hess}{\mathcal H}
+\newcommand{\V}{\mathfrak V}
+\newcommand{\A}{\mathcal A}
+\newcommand{\M}{\mathcal M}
+\newcommand{\Q}{\mathcal Q}
+\newcommand{\Pcone}{\mathcal P}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\half}{\frac12}
+
+\title{Stable Defect Resolution and Obstruction-Filtered Positivity:\\
+A General Framework for Manifold Defects, Arithmetic Vacua, and Pleroma Diagnostics}
+\author{Kye Kirby\\
+\small Draft preprint, research notes}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop a general framework for passing from vacuum manifold data to admissible stable defect spectra. The guiding principle is that elementary objects of a ``world'' are the indecomposable stable defects of its completed vacuum datum. For an ordinary vacuum manifold this recovers the familiar homotopy classification of vortices, monopoles, domain walls, skyrmions, and spinorial sectors, but with additional filters for finite energy, anomaly cancellation, and spectral stability. For an arithmetic vacuum, the atoms of the divisibility monoid appear as prime defects, while the zero distribution of completed zeta functions becomes a collective spectral-stability problem.
+
+The paper packages several abstract procedures developed in the accompanying research discussion: the Stable Defect Spectrum theorem, Stable Defect Resolution, Positivity-Sheaf Completion Analysis, Cone-Contractive Completion Analysis, Stable Defect Flow Analysis, Scattering Recovery, Gamma/Archimedean Recovery, Herglotz-Measure Recovery, and Obstruction-Filtered Stable Defect Analysis. We apply these tools to the ``pleroma'' arithmetic vacuum and explain why Riemann-hypothesis-type positivity repeatedly reappears as a global stability condition rather than a local topological fact. A concrete diagnostic is included: the de Bruijn--Newman kernel $K(u)=\Phi(|u|)$ fails the classical total-positivity/P\'olya-frequency route at order five, and the associated obstruction survives the natural even/cosine projection in a finite numerical test. Thus ordinary total positivity is not the missing global positivity mechanism. The framework is therefore useful both positively, by organizing stable-defect classification, and negatively, by eliminating candidate proof mechanisms.
+
+All claims about RH-level consequences are stated conditionally. No proof of the Riemann hypothesis is claimed.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+
+A recurring problem in mathematical physics, arithmetic geometry, and spectral theory is the following: given a vacuum object, what are its elementary stable excitations? In ordinary field theory the answer often begins with topology. If a field takes values in a vacuum manifold $\M$, then codimension-$q$ defects are detected by maps
+\[
+        S^{q-1}\longrightarrow \M,
+\]
+and hence by homotopy classes in $\pi_{q-1}(\M)$. This is the standard origin of domain walls, strings/vortices, monopoles, skyrmions, and related solitons.
+
+However, topology is only the first sieve. A homotopy class may fail to admit finite-energy representatives; it may have an anomaly; it may possess negative fluctuation modes; or it may be decomposable into lower-charge stable sectors. Thus the genuinely physical spectrum is not the raw homotopy spectrum, but the stable, finite, anomaly-free, spectrally nonnegative part of it.
+
+This paper abstracts that sieve into a general procedure:
+\[
+\boxed{
+    \text{vacuum datum}
+    \quad\Longrightarrow\quad
+    \text{admissible stable defect spectrum}.
+}
+\]
+The same logic can be applied beyond ordinary manifolds. In an arithmetic vacuum, the multiplicative monoid
+\[
+        \N^*\cong \bigoplus_p \N e_p
+\]
+has atoms: the primes. Thus primes can be viewed as elementary defects of the multiplicative pleroma. Integers are then multi-defect configurations, and zeta functions are partition functions of the defect gas. Distributional questions, including Riemann-hypothesis-level questions, are not fixed by atomicity alone; they live in the spectral-stability layer of the completed defect ensemble.
+
+The main contribution is therefore not a proof of any major open problem. It is a systematic framework for identifying which global positivity questions are structural, which are merely reformulations, and which proposed positivity mechanisms fail. In particular, we show that a tempting classical route through total positivity of the de Bruijn--Newman kernel is obstructed at order five.
+
+\subsection{Executive summary of the framework}
+
+The paper introduces nine connected objects/procedures.
+
+\begin{enumerate}[label=\textbf{P\arabic*.}, leftmargin=*]
+    \item \textbf{Stable Defect Spectrum.} A universal sieve from raw topological classes to finite-energy, anomaly-free, spectrally stable, indecomposable sectors.
+    \item \textbf{Stable Defect Resolution (SDR).} A procedure for computing stable sectors by Morse index/spectral flow rather than by pointwise positivity checks.
+    \item \textbf{Positivity-Sheaf Completion Analysis.} A geometric language for local positivity cones and their gluing obstructions.
+    \item \textbf{Cone-Contractive Completion Analysis.} A normalized operator criterion saying that finite defect transfer must be a contraction in the completion norm.
+    \item \textbf{Stable Defect Flow Analysis.} A deformation method in which instability is born only through spectral crossings or double-zero events.
+    \item \textbf{Obstruction-Filtered Stable Defect Analysis.} A diagnostic method separating raw kernel obstructions from obstructions that survive projection to the admissible defect subspace.
+\end{enumerate}
+
+The pleroma example shows why these methods matter: many transformations of RH-level positivity are equivalent to the same global stability problem. The framework prevents one from mistaking an equivalence for a proof, while still extracting concrete finite obstructions and useful structural constraints.
+
+\section{Vacuum data and raw defect spectra}
+
+\begin{definition}[Vacuum datum]
+A vacuum datum is a tuple
+\[
+\boxed{
+\V=(X,\M,G,H,\A,D,S)
+}
+\]
+where $X$ is a base space or spacetime, $\M$ is a vacuum/statistical/target manifold, $G$ is a symmetry group, $H\subset G$ is the stabilizer of a chosen vacuum so that often $\M\simeq G/H$, $\A$ is connection or gauge data, $D$ is a spectral operator such as a Dirac/Laplacian/stability operator, and $S$ is an action, energy, or completed filling functional.
+\end{definition}
+
+A codimension-$q$ defect is detected by a linking sphere $S^{q-1}$ around the defect worldvolume. The raw topological sector is a homotopy class
+\[
+        [f:S^{q-1}\to \M]\in \pi_{q-1}(\M).
+\]
+Thus the raw defect spectrum is
+\[
+\boxed{
+        \mathscr D_{\rm raw}(\M)=\bigcup_{q\ge1}\pi_{q-1}(\M).
+}
+\]
+This expression may be replaced or refined by generalized cohomology, K-theory, cobordism, divisor theory, or stacky homotopy depending on the underlying object.
+
+\begin{definition}[Raw defect class]
+A raw defect class of codimension $q$ is an element
+\[
+        \alpha\in\pi_{q-1}(\M)
+\]
+or an appropriate generalized charge group associated to the vacuum datum.
+\end{definition}
+
+\section{The stable defect spectrum theorem}
+
+The raw spectrum is too large. We need four filters.
+
+\subsection{Finite energy}
+
+A representative $\Phi_\alpha:X\setminus\Sigma\to\M$ in class $\alpha$ must have finite completed energy:
+\[
+\boxed{
+E[\Phi_\alpha]
+=
+\int_{X\setminus\Sigma}
+\left(
+|\nabla_{\A}\Phi_\alpha|^2+|F_{\A}|^2+V(\Phi_\alpha)
+\right)d{\rm vol}<\infty.
+}
+\]
+For arithmetic or spectral vacua, this finite-energy condition is replaced by finite completed action, finite determinant, or finite filling modulus.
+
+\subsection{Topological charge}
+
+There is a charge map
+\[
+\boxed{
+Q_{\rm top}:\mathscr D_{\rm raw}(\M)\longrightarrow\mathcal Q
+}
+\]
+into an appropriate charge lattice or generalized cohomology group. Stable nontrivial defects require
+\[
+        Q_{\rm top}(\alpha)\ne0.
+\]
+
+\subsection{Spectral stability}
+
+Let
+\[
+\boxed{
+        \Hess_\alpha=\delta^2 S\big|_{\Phi_\alpha}
+}
+\]
+be the Hessian of the completed action at the defect representative. Spectral stability requires
+\[
+\boxed{
+        \Spec(\Hess_\alpha)\cap(-\infty,0)=\varnothing
+}
+\]
+modulo symmetry zero modes.
+
+\subsection{Anomaly and quantization consistency}
+
+The sector must define a consistent quantum phase. Symbolically,
+\[
+\boxed{
+        \Anom(\alpha)=0.
+}
+\]
+This condition includes large-gauge consistency, spin-structure constraints, Dirac quantization, index constraints, and global anomaly cancellation.
+
+\begin{theorem}[Stable defect spectrum theorem]
+Let $\V=(X,\M,G,H,\A,D,S)$ be a vacuum datum. The admissible stable defect sectors are precisely the raw sectors $\alpha$ satisfying finite completion, nonzero topological charge, spectral nonnegativity modulo symmetry zero modes, and anomaly cancellation:
+\[
+\boxed{
+\Def_{\rm stable}(\V)
+=
+\bigcup_{q\ge1}
+\left\{
+\alpha\in\pi_{q-1}(\M):
+E_\alpha<\infty,
+Q_{\rm top}(\alpha)\ne0,
+\Spec(\Hess_\alpha)\ge0,
+\Anom(\alpha)=0
+\right\}.
+}
+\]
+The elementary particle/atom spectrum is the indecomposable part:
+\[
+\boxed{
+        \mathrm{Particles}(\V)=\Indec\bigl(\Def_{\rm stable}(\V)\bigr).
+}
+\]
+\end{theorem}
+
+\begin{proof}[Proof schema]
+The statement is a definition-theorem: topology supplies possible sectors, while the remaining conditions are necessary for physical or completed stability. Finite energy is necessary for localization; nonzero charge is necessary for topological protection; anomaly cancellation is necessary for a well-defined quantum sector; and nonnegative Hessian is equivalent to absence of linearized decay directions. Indecomposability removes composite multi-defect configurations from the elementary spectrum.
+\end{proof}
+
+\begin{remark}
+This theorem predicts admissible stable sectors, not automatically their masses, couplings, chirality, generation structure, or decay widths. Those require a dynamical spectral problem on top of the topological sieve.
+\end{remark}
+
+\section{Stable Defect Resolution}
+
+The direct spectral condition
+\[
+        \Spec(\Hess_\alpha)\ge0
+\]
+is often the hard part. Stable Defect Resolution replaces positivity checking by an index computation.
+
+\begin{definition}[Morse index of a defect]
+The Morse index of a defect sector is
+\[
+\boxed{
+        \mu(\alpha)=\#\{\lambda<0:\lambda\in\Spec(\Hess_\alpha)\},
+}
+\]
+counted with multiplicity and after removing pure symmetry zero modes.
+\end{definition}
+
+Then
+\[
+        \Hess_\alpha\ge0\quad\Longleftrightarrow\quad \mu(\alpha)=0.
+\]
+
+\begin{definition}[Stable Defect Resolution]
+Stable Defect Resolution is the procedure:
+\begin{enumerate}[leftmargin=*]
+    \item enumerate raw sectors $\alpha\in\mathscr D_{\rm raw}(\M)$;
+    \item remove sectors with infinite filling modulus $\kappa(\alpha)=\infty$;
+    \item remove sectors with $Q_{\rm top}=0$ or $\Anom\ne0$;
+    \item construct $\Hess_\alpha$ at a completed representative;
+    \item compute $\mu(\alpha)$, often by spectral flow;
+    \item retain exactly sectors with $\mu(\alpha)=0$.
+\end{enumerate}
+\end{definition}
+
+A practical route is to introduce a path
+\[
+        \Hess_\alpha(t),\qquad t\in[0,1],
+\]
+from a known positive operator $\Hess_\alpha(0)>0$ to the desired Hessian $\Hess_\alpha(1)=\Hess_\alpha$. Then
+\[
+\boxed{
+        \mu(\alpha)=\SF\{\Hess_\alpha(t)\}_{t\in[0,1]}.
+}
+\]
+Negative modes are born only at zero crossings.
+
+\section{Positivity-sheaf and cone-contractivity analyses}
+
+\subsection{Positivity sheaves}
+
+For an open set $U\subset X$, define the local positivity cone
+\[
+\boxed{
+\Pcone_\alpha(U)=\{f\in\mathcal F(U):\Q_{\alpha,U}[f]\ge0\}.
+}
+\]
+The collection $U\mapsto\Pcone_\alpha(U)$ forms a cone-valued presheaf. A sector has a positivity-gluing obstruction if local positive cones fail to glue into a global positive cone.
+
+This motivates a sheaf-like obstruction class
+\[
+\boxed{
+        \Omega_\alpha\in H^1(X,\mathrm{Aut}(\Pcone_\alpha))
+}
+\]
+or a quadratic sign obstruction in an appropriate $H^2$ group. Vanishing of $\Omega_\alpha$ is necessary for global positivity but not sufficient: local positivity can glue neutrally without dominating finite defect transfer.
+
+\subsection{Cone-contractivity}
+
+Suppose the completed Hessian splits as
+\[
+\boxed{
+        \Hess_{\rm fill}=\Hess_{\rm arch}-\Hess_{\rm def}
+}
+\]
+where $\Hess_{\rm arch}>0$ defines the global completion norm and $\Hess_{\rm def}$ is the finite/local defect transfer. Define
+\[
+\boxed{
+        \mathcal B=\Hess_{\rm arch}^{-1/2}\Hess_{\rm def}\Hess_{\rm arch}^{-1/2}.
+}
+\]
+
+\begin{proposition}[Cone-contractivity criterion]
+Assuming $\Hess_{\rm arch}>0$ on the admissible subspace,
+\[
+\boxed{
+        \Hess_{\rm arch}-\Hess_{\rm def}\ge0
+        \quad\Longleftrightarrow\quad
+        \mathcal B\le I.
+}
+\]
+Equivalently, finite defect transfer must be a contraction in the completion norm.
+\end{proposition}
+
+\begin{proof}
+Let $g=\Hess_{\rm arch}^{1/2}f$. Then
+\[
+\begin{aligned}
+\langle f,(\Hess_{\rm arch}-\Hess_{\rm def})f\rangle
+&=\langle g,g\rangle-\langle g,\Hess_{\rm arch}^{-1/2}\Hess_{\rm def}\Hess_{\rm arch}^{-1/2}g\rangle\\
+&=\langle g,(I-\mathcal B)g\rangle.
+\end{aligned}
+\]
+Thus nonnegativity for all $f$ is equivalent to $I-\mathcal B\ge0$.
+\end{proof}
+
+This criterion is useful because it identifies exactly what a global positivity theorem must prove. It is not enough for local defect cones to glue; the finite transfer must be contractive in the completed norm.
+
+\section{Stable defect flow and no-crossing}
+
+A stable-defect flow is a one-parameter family
+\[
+\boxed{
+        \Hess_t=\Hess_{\rm arch}-t\Hess_{\rm def},\qquad t\in[0,1].
+}
+\]
+Instability appears when an eigenvalue crosses zero. If
+\[
+        \mathcal B=\Hess_{\rm arch}^{-1/2}\Hess_{\rm def}\Hess_{\rm arch}^{-1/2},
+\]
+then zero crossings occur when
+\[
+        \det(I-t\mathcal B)=0.
+\]
+Thus the regularized stability determinant is
+\[
+\boxed{
+        D(t)=\det_{\rm reg}(I-t\mathcal B).
+}
+\]
+A stable sector has no zeros of $D(t)$ in $0\le t\le1$.
+
+\subsection{Heat-flow model}
+
+For the completed Riemann xi function, one natural stability flow is the de Bruijn--Newman heat deformation
+\[
+\boxed{
+        H_t(z)=\int_0^\infty e^{tu^2}\Phi(u)\cos(zu)\,du,
+}
+\]
+where
+\[
+\boxed{
+\Phi(u)=\sum_{n=1}^{\infty}\left(2\pi^2n^4e^{9u}-3\pi n^2e^{5u}\right)e^{-\pi n^2e^{4u}}.
+}
+\]
+It satisfies
+\[
+        \partial_tH_t=-\partial_z^2H_t.
+\]
+De Bruijn--Newman theory states that there is a real constant $\Lambda$ such that all zeros of $H_t$ are real precisely for $t\ge\Lambda$; RH is equivalent to $\Lambda\le0$, and Rodgers--Tao proved $\Lambda\ge0$ \cite{RodgersTao2018}.
+
+If $x_k(t)$ is a simple real zero, then differentiating $H_t(x_k(t))=0$ gives
+\[
+        x_k'(t)=\frac{H_t''(x_k(t))}{H_t'(x_k(t))}.
+\]
+When all zeros are real and simple, the product representation yields
+\[
+\boxed{
+        x_k'(t)=2\sum_{j\ne k}\frac{1}{x_k(t)-x_j(t)}.
+}
+\]
+Thus real zeros repel. Collisions cannot form forward in $t$ once all zeros are real and simple.
+
+\begin{proposition}[Forward no-crossing]
+If all zeros of $H_{t_0}$ are real and simple, then the real-zero configuration remains collision-free for $t>t_0$ until a boundary event outside the simple-real regime. Nearby zeros repel according to a Dyson-type law.
+\end{proposition}
+
+The remaining RH-level obstruction is the exclusion of a positive-time first double zero:
+\[
+\boxed{
+        H_t(x)=0,
+        \qquad
+        H_t'(x)=0,
+        \qquad
+        t>0.
+}
+\]
+This is not a local contradiction: near a double zero the heat equation permits the normal form
+\[
+        H_t(x)\approx -b(t-t_*)+\frac b2(x-x_*)^2.
+\]
+Thus a complex conjugate pair can become two real zeros. Any proof excluding such events must use a global mechanism.
+
+\section{Arithmetic vacuum and pleroma defects}
+
+\subsection{Prime defects}
+
+The multiplicative arithmetic vacuum has atom decomposition
+\[
+\boxed{
+        \N^*\cong\bigoplus_p\N e_p,
+        \qquad
+        n=\prod_p p^{v_p(n)}.
+}
+\]
+
+\begin{proposition}[Prime defect theorem]
+The elementary atomic defects of the multiplicative arithmetic vacuum are exactly the primes:
+\[
+\boxed{
+        \Def_{\rm atom}(\mathcal V_\times)=\{p\in\N:p\text{ prime}\}.
+}
+\]
+Integers are finite multi-defect configurations
+\[
+        [n]=\sum_p v_p(n)[p].
+\]
+\end{proposition}
+
+The zeta function is the partition function of this prime-defect gas:
+\[
+        \zeta(s)=\sum_{n=1}^{\infty}n^{-s}=\prod_p(1-p^{-s})^{-1},
+\]
+and the defect-density generator is
+\[
+\boxed{
+        -\frac{\zeta'}{\zeta}(s)=\sum_{n=1}^{\infty}\frac{\Lambda(n)}{n^s}=\sum_{p,k}\frac{\log p}{p^{ks}}.
+}
+\]
+
+\subsection{Completed pleroma Hessian}
+
+The completed zeta function is
+\[
+\boxed{
+        \xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s).
+}
+\]
+In logarithmic variables, the finite-prime transfer is formally represented by
+\[
+\boxed{
+        \Hess_{\rm prime}=\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\left(T_{\log n}+T_{-\log n}\right).
+}
+\]
+The infinite/archimedean completion supplies $\Hess_\infty$. The completed filling form is
+\[
+\boxed{
+        \Hess_{\rm fill}^{\zeta}=\Hess_\infty-\Hess_{\rm prime}.
+}
+\]
+Cone-contractivity says that the global positivity problem is
+\[
+\boxed{
+        \mathcal B_\zeta
+        =\Hess_\infty^{-1/2}\Hess_{\rm prime}\Hess_\infty^{-1/2}
+        \le I.
+}
+\]
+This is equivalent to completed positivity, not a proof of it. It identifies the exact contraction property required.
+
+\subsection{Prime bridge recovery}
+
+The finite-prime part of the completed filling operator is recovered from the logarithmic derivative of the Euler product. For $\Re s>1$,
+\[
+        -\frac{\zeta'}{\zeta}(s)
+        =\sum_{p,k\ge1}(\log p)p^{-ks}
+        =\sum_{n\ge2}\frac{\Lambda(n)}{n^s}.
+\]
+Moving to the critical normalization $s=\half+\epsilon+i\gamma$ gives the regularized prime multiplier
+\[
+\boxed{
+        m_{\rm prime}^{(\epsilon)}(\gamma)
+        =2\Re\left[-\frac{\zeta'}{\zeta}\left(\half+\epsilon+i\gamma\right)\right].
+}
+\]
+Equivalently, in logarithmic coordinate $u$, the recovered finite-prime bridge operator is
+\[
+\boxed{
+        \Hess_{\rm prime}^{(\epsilon)}
+        =\sum_{n\ge2}\frac{\Lambda(n)}{n^{\half+\epsilon}}
+        \left(T_{\log n}+T_{-\log n}\right),
+        \qquad (T_a f)(u)=f(u-a).
+}
+\]
+The unregularized critical object is obtained by the boundary limit $\epsilon\downarrow0$ in the sense of distributions or quadratic forms. This is the finite-defect recovery procedure: prime powers become translation bridges of length $\log n$ and weight $\Lambda(n)/\sqrt n$.
+
+\subsection{Gamma/archimedean recovery}
+
+The infinite-place bath is not inserted by hand. It is recovered from the archimedean determinant factor in
+\[
+        \xi(s)=\frac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s).
+\]
+The logarithmic derivative decomposes as
+\[
+\boxed{
+        \frac{\xi'}{\xi}(s)
+        =\frac1s+\frac1{s-1}
+        -\frac12\log\pi
+        +\frac12\psi(s/2)
+        +\frac{\zeta'}{\zeta}(s),
+}
+\]
+where $\psi=\Gamma'/\Gamma$. Thus the recovered archimedean multiplier is
+\[
+\boxed{
+        m_\infty^{(\epsilon)}(\gamma)
+        =2\Re\left[
+        -\frac1s-\frac1{s-1}
+        +\frac12\log\pi
+        -\frac12\psi(s/2)
+        \right]_{s=\half+\epsilon+i\gamma}.
+}
+\]
+With this convention the completed filling multiplier is
+\[
+\boxed{
+        m_{\rm fill}^{(\epsilon)}(\gamma)
+        =m_\infty^{(\epsilon)}(\gamma)-m_{\rm prime}^{(\epsilon)}(\gamma)
+        =2\Re\left[-\frac{\xi'}{\xi}\left(\half+\epsilon+i\gamma\right)\right].
+}
+\]
+This is the gamma recovery procedure. The gamma factor and the elementary pole factors determine the completion norm against which the finite-prime bridges must be compared. In the defect language, $\Hess_\infty$ is the Hessian of the infinite-place filling bath, while $\Hess_{\rm prime}$ is the finite-defect transfer.
+
+\subsection{Scattering recovery}
+
+The same completed operator can be recovered from a scattering phase. Define the completed scattering function
+\[
+\boxed{
+        S_\zeta(\gamma)
+        =\frac{\xi(\half-i\gamma)}{\xi(\half+i\gamma)}.
+}
+\]
+On the real line, away from zeros and poles, the functional equation and reality of $\xi$ give
+\[
+        |S_\zeta(\gamma)|=1.
+\]
+Thus $S_\zeta$ is a unitary scattering phase on the critical axis. Its Wigner time-delay operator is
+\[
+\boxed{
+        \tau_\zeta(\gamma)
+        =-iS_\zeta(\gamma)^{-1}\frac{d}{d\gamma}S_\zeta(\gamma).
+}
+\]
+A direct logarithmic differentiation gives
+\[
+\boxed{
+        \tau_\zeta(\gamma)
+        =-2\Re\frac{\xi'}{\xi}\left(\half+i\gamma\right)
+        =m_{\rm fill}^{(0)}(\gamma),
+}
+\]
+again in the appropriate boundary-value sense. Hence the scattering recovery procedure is
+\[
+\boxed{
+        S_\zeta
+        \longmapsto
+        -iS_\zeta^{-1}S_\zeta'
+        \longmapsto
+        \Hess_\infty-\Hess_{\rm prime}.
+}
+\]
+Unitarity alone only says that the time delay is real. Positivity requires passivity,
+\[
+        -iS^{-1}S'\ge0,
+\]
+which is exactly the global stability condition in this setting. Thus scattering recovery is a diagnostic and normalization principle, not by itself a proof of positivity.
+
+\subsection{Zero expansion and the instability interpretation}
+
+The zero expansion explains why off-critical zeros are instability defects. Let $\rho=\beta+i\tau$ be a nontrivial zero of $\zeta$, and set
+\[
+        s=\half+\epsilon+i\gamma.
+\]
+A zero contributes locally to the real part of $-\xi'/\xi$ through a Poisson-type term
+\[
+\boxed{
+        \frac{\half+\epsilon-\beta}
+        {(\half+\epsilon-\beta)^2+(\gamma-\tau)^2}.
+}
+\]
+If $\beta=\half$, this becomes the positive Poisson kernel
+\[
+        \frac{\epsilon}{\epsilon^2+(\gamma-\tau)^2}.
+\]
+If a zero lies to the right of the critical line, $\beta>\half$, then for small $\epsilon$ the numerator is negative near $\gamma=\tau$. Thus off-critical zeros are precisely the local spectral defects that can create negative completed filling. In stable-defect language, RH says that the completed arithmetic vacuum has no such off-axis unstable collective defect modes.
+
+\subsection{Herglotz-measure recovery}
+
+Let
+\[
+        \Xi(z)=\xi\left(\half-iz\right),
+        \qquad
+        M_E(z)=\frac{\Xi(z)}{\Xi'(z)}.
+\]
+If $M_E$ is Herglotz in the upper half-plane, then it has a representation
+\[
+\boxed{
+        M_E(z)=a+bz+\int_{\R}\left(\frac1{t-z}-\frac{t}{1+t^2}\right)d\mu(t),
+        \qquad b\ge0,\quad d\mu\ge0.
+}
+\]
+For a real entire function with simple real zeros, poles of $M_E$ occur at critical points $c_j$ satisfying
+\[
+        \Xi'(c_j)=0.
+\]
+The local residue is
+\[
+        \operatorname*{Res}_{z=c_j}M_E(z)=\frac{\Xi(c_j)}{\Xi''(c_j)},
+\]
+so the Herglotz mass is
+\[
+\boxed{
+        w_j=-\frac{\Xi(c_j)}{\Xi''(c_j)}.
+}
+\]
+The recovery procedure is therefore:
+\[
+\boxed{
+        \Xi
+        \longmapsto
+        \{c_j:\Xi'(c_j)=0\}
+        \longmapsto
+        w_j=-\Xi(c_j)/\Xi''(c_j)
+        \longmapsto
+        \text{candidate positive measure }\mu.
+}
+\]
+In finite numerical tests, the first recovered critical-point weights are positive and the resulting truncated partial-fraction model accurately reproduces the imaginary part of $M_E$ at sample points. This is evidence that the Herglotz representation is the right completed object; proving it globally would still require showing that all critical points are real, all masses are nonnegative, and the expansion converges with correct affine term.
+
+\subsection{de Branges recovery}
+
+The same data may be packaged into a de Branges candidate
+\[
+\boxed{
+        E_\xi(z)=\Xi(z)+i\Xi'(z),
+        \qquad
+        E_\xi^\#(z)=\Xi(z)-i\Xi'(z).
+}
+\]
+The Hermite--Biehler condition is
+\[
+\boxed{
+        |E_\xi(z)|>|E_\xi^\#(z)|,
+        \qquad \Imm z>0.
+}
+\]
+Equivalently, the de Branges kernel
+\[
+\boxed{
+        K_E(z,w)=
+        \frac{E_\xi(z)\overline{E_\xi(w)}-E_\xi^\#(z)\overline{E_\xi^\#(w)}}
+        {2\pi i(\overline w-z)}
+}
+\]
+should be positive. After substitution, this kernel is proportional to
+\[
+        \frac{\Xi'(z)\overline{\Xi(w)}-\Xi(z)\overline{\Xi'(w)}}{\overline w-z}.
+\]
+This gives the de Branges recovery procedure:
+\[
+\boxed{
+        \Xi
+        \longmapsto
+        E_\xi=\Xi+i\Xi'
+        \longmapsto
+        K_E
+        \longmapsto
+        \text{Hilbert-space positivity certificate.}
+}
+\]
+Again, this is a recovery and testing framework rather than an unconditional proof. For the Riemann case, the global Hermite--Biehler property is RH-level.
+
+\subsection{Herglotz and de Branges shadows}
+
+Let
+\[
+        \Xi(z)=\xi\left(\frac12-iz\right).
+\]
+A natural Herglotz candidate is
+\[
+\boxed{
+        M(z)=\frac{\Xi(z)}{\Xi'(z)}.
+}
+\]
+If $M$ is Herglotz in the upper half-plane, then the Pick kernel
+\[
+\boxed{
+        K_M(z,w)=\frac{M(z)-\overline{M(w)}}{z-\overline w}
+}
+\]
+is positive. For real entire functions with simple real zeros, $M$ has a partial-fraction representation with positive masses at critical points of $\Xi$. Numerically, the first recovered critical-point weights
+\[
+        w_j=-\frac{\Xi(c_j)}{\Xi''(c_j)},\qquad \Xi'(c_j)=0,
+\]
+are positive in the finite tests developed in the accompanying computations. This is evidence for the right local Herglotz structure but not a proof of global positivity.
+
+\section{Obstruction-filtered stable defect analysis}
+
+A candidate global positivity mechanism may fail on raw test space but still succeed on the admissible defect subspace. Let $K$ be a kernel and let $P_\A$ denote projection onto the admissible completed perturbations. Then the physically relevant condition is
+\[
+\boxed{
+        P_\A K P_\A\ge0,
+}
+\]
+not necessarily $K\ge0$ on all raw perturbations.
+
+\begin{definition}[Obstruction-filtered analysis]
+Given a candidate positivity kernel $K$:
+\begin{enumerate}[leftmargin=*]
+    \item search for finite negative minors or negative modes;
+    \item extract the associated eigenvector or signed perturbation;
+    \item determine its defect/admissibility sector;
+    \item project to the admissible completed subspace;
+    \item test whether the obstruction survives.
+\end{enumerate}
+If it survives, the candidate positivity mechanism is falsified. If it is projected out, the raw obstruction is nonphysical for the completed defect system.
+\end{definition}
+
+\section{A negative diagnostic: PF\texorpdfstring{$_5$}{5} obstruction of the de Bruijn--Newman kernel}
+
+A tempting route to the no-double-zero theorem is total positivity. If the de Bruijn--Newman kernel
+\[
+        K(u)=\Phi(|u|)
+\]
+were a P\'olya-frequency function of infinite order, one could try to derive real-rootedness or variation-diminishing properties for the heat-flow transform. This route fails.
+
+A recent preprint proves by certified interval arithmetic that $K$ is not $\PF_5$ by exhibiting a negative $5\times5$ Toeplitz minor \cite{Michalowski2026}. We reproduced the corresponding finite diagnostic numerically. Define
+\[
+\boxed{
+        D_r(u_0,h)=\det\left[K(u_0+(i-j)h)\right]_{i,j=0}^{r-1}.
+}
+\]
+At
+\[
+        u_0=0.01,
+        \qquad h=0.05,
+\]
+we obtained
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Order & Determinant & Sign\\
+\midrule
+$D_2$ & $3.4064040623\times10^{-2}$ & positive\\
+$D_3$ & $6.9769706426\times10^{-4}$ & positive\\
+$D_4$ & $3.8274713676\times10^{-6}$ & positive\\
+$D_5$ & $-1.8472360734\times10^{-9}$ & negative\\
+\bottomrule
+\end{tabular}
+\end{center}
+Thus ordinary total positivity is not available.
+
+\subsection{Projection test}
+
+The negative PF minor is not automatically a negative quadratic-form mode because the Toeplitz minor matrix is not the same as a symmetric Gram matrix. Therefore we tested whether the obstruction is removed by the natural even/cosine projection.
+
+Using the combined support
+\[
+        \{u_0+ih\}_{i=0}^4\cup\{ih\}_{i=0}^4
+\]
+and the symmetric Gram matrix $G_{ab}=K(s_a-s_b)$, the raw combined Gram matrix had negative eigenvalues. After symmetrizing the support under $u\mapsto -u$ and restricting to the even subspace, the smallest eigenvalue was
+\[
+\boxed{
+        \lambda_{\min,\mathrm{even}}\approx -1.10871354\times10^{-3}.
+}
+\]
+The odd sector also contained a negative eigenvalue
+\[
+\boxed{
+        \lambda_{\min,\mathrm{odd}}\approx -4.55439990\times10^{-4}.
+}
+\]
+Therefore the PF$_5$ obstruction survives the simple even/cosine admissibility projection.
+
+\begin{proposition}[Failure of the direct total-positivity route]
+The kernel $K(u)=\Phi(|u|)$ cannot serve as a global positivity certificate through ordinary $\PF_\infty$ total positivity. Moreover, the displayed PF$_5$ obstruction is not removed by the elementary even/cosine projection used in the finite diagnostic above.
+\end{proposition}
+
+\begin{remark}
+This does not disprove RH. It disproves a proposed proof mechanism: raw or simply projected total positivity of the de Bruijn--Newman kernel is not the missing global positivity principle. The RH-relevant Herglotz/de Branges kernel built from $\Xi/\Xi'$ is a different object.
+\end{remark}
+
+\section{Fisher-frame example}
+
+For a Fisher-frame vacuum with
+\[
+        \M_{\rm FF}=SO(3),
+        \qquad
+        SU(2)\to SO(3),
+\]
+one has
+\[
+        \pi_1(SO(3))=\Z_2.
+\]
+The nontrivial loop gives spinorial monodromy:
+\[
+        U(2\pi)=-U(0),
+        \qquad
+        R(2\pi)=R(0).
+\]
+An electron-like stable sector is therefore represented schematically as
+\[
+\boxed{
+        \alpha_e=(Q_{\Z_2}=1,\ Q_{U(1)}=-1,\ s=1/2,\ \Spec(\Hess_e)\ge0,
+        \Anom(\alpha_e)=0).
+}
+\]
+The stable-defect framework does not by itself compute $m_e$, $\alpha$, electroweak mixing, or generation structure. It supplies the admissible topological/spectral sector in which those dynamical computations should live.
+
+\section{Discussion: what the framework does and does not do}
+
+The procedures in this paper are designed to prevent two common mistakes.
+
+First, topology alone is not enough. It gives candidate sectors, not stable objects. Stable objects require completion, anomaly cancellation, and nonnegative Hessians.
+
+Second, positivity equivalences are not proofs. In the pleroma case one can move among several equivalent-looking statements:
+\[
+\Hess_{\rm fill}\ge0,
+\qquad
+\mathcal B\le I,
+\qquad
+K_M\succeq0,
+\qquad
+M\text{ Herglotz},
+\qquad
+E\in\mathrm{HB}.
+\]
+These are useful diagnostic languages, but a proof requires a mechanism that produces one of them from lower-level structure.
+
+The negative PF$_5$ diagnostic is therefore valuable. It rules out one plausible lower-level mechanism: ordinary total positivity of the de Bruijn--Newman kernel. The search must move to a different mechanism, such as a more refined Herglotz representation, an explicit $R^*R$ factorization of the completed Hessian, a true self-adjoint Hilbert--P\'olya realization, or a deeper admissibility projection not captured by the elementary even/cosine test.
+
+\section{Conclusion}
+
+We have formulated a general stable-defect program:
+\[
+\boxed{
+\begin{gathered}
+        \text{vacuum object}\longrightarrow\text{raw defect classes}\longrightarrow\\
+        \text{finite/anomaly-free/spectrally stable sectors}\longrightarrow\\
+        \text{indecomposable elementary objects}.
+\end{gathered}
+}
+\]
+For ordinary manifolds this recovers the usual defect taxonomy with added spectral and anomaly filters. For Fisher-frame geometry it packages spinorial matter sectors. For the arithmetic pleroma it identifies primes as elementary atoms and places RH-level questions in the collective spectral-stability layer of the completed defect gas.
+
+The framework also gives a disciplined way to test proposed global positivity mechanisms. The PF$_5$ obstruction of the de Bruijn--Newman kernel, and its survival under the elementary even/cosine projection, show that the direct total-positivity route is not the desired global certificate. This is a negative result, but it is a useful one: it narrows the search to positivity mechanisms intrinsic to the completed spectral object, not to the raw de Bruijn--Newman kernel alone.
+
+\appendix
+
+\section{Numerical PF\texorpdfstring{$_5$}{5} diagnostic}
+
+The computations used the rapidly convergent series
+\[
+\Phi(u)=\sum_{n=1}^{\infty}\left(2\pi^2n^4e^{9u}-3\pi n^2e^{5u}\right)e^{-\pi n^2e^{4u}}
+\]
+with high working precision. For the finite diagnostic we used
+\[
+        u_0=0.01,
+        \qquad h=0.05.
+\]
+The Toeplitz matrix
+\[
+        M_{ij}=K(u_0+(i-j)h),\qquad i,j=0,\ldots,4,
+\]
+had determinant
+\[
+        \det M\approx -1.8472360734418034\times10^{-9}.
+\]
+Its singular values were approximately
+\[
+        1.66256,
+        0.498178,
+        0.0658836,
+        0.00319666,
+        1.05898\times10^{-5}.
+\]
+The symmetric part already had a small negative eigenvalue, but the decisive admissibility test was the even-projected Gram computation, where
+\[
+        \lambda_{\min,\mathrm{even}}\approx -1.10871354\times10^{-3}.
+\]
+This confirms that the raw PF obstruction is not simply removed by even/cosine symmetrization.
+
+\begin{thebibliography}{9}
+
+\bibitem{deBruijn1950}
+N. G. de Bruijn,
+\emph{The roots of trigonometric integrals},
+Duke Mathematical Journal 17 (1950), 197--226.
+
+\bibitem{Newman1976}
+C. M. Newman,
+\emph{Fourier transforms with only real zeros},
+Proceedings of the American Mathematical Society 61 (1976), 245--251.
+
+\bibitem{RodgersTao2018}
+B. Rodgers and T. Tao,
+\emph{The de Bruijn--Newman constant is non-negative},
+arXiv:1801.05914; Forum of Mathematics, Pi 8 (2020), e6.
+
+\bibitem{deBranges1968}
+L. de Branges,
+\emph{Hilbert Spaces of Entire Functions},
+Prentice-Hall, 1968.
+
+\bibitem{Karlin1968}
+S. Karlin,
+\emph{Total Positivity},
+Stanford University Press, 1968.
+
+\bibitem{Michalowski2026}
+W. Micha\l{}owski,
+\emph{On the P\'olya Frequency Order of the de Bruijn--Newman Kernel: Certified Failure at Order Five and the Toeplitz Threshold Phenomenon},
+arXiv:2602.20313, 2026.
+
+\end{thebibliography}
+
+\end{document}

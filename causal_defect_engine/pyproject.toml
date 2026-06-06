@@ -1,0 +1,15 @@
+[project]
+name = "causal-defect-engine"
+version = "0.8.0"
+description = "Extensible causal defect algebra engine with optional Numba acceleration"
+requires-python = ">=3.9"
+dependencies = [
+  "numpy>=1.22",
+  "numba>=0.57",
+]
+
+[project.optional-dependencies]
+pointcloud = ["scipy>=1.9"]
+
+[tool.setuptools.packages.find]
+where = ["."]

@@ -1,0 +1,17 @@
+Layer 3: Fixing ρ0\rho_0
+ρ0​ via spinorial Bohr-Sommerfeld
+We have one equation (m2ρ0=2m^2\rho_0 = 2
+m2ρ0​=2) and two unknowns. The filling modulus gave us Sesc=2πρ0S_\text{esc} = 2\pi\rho_0
+Sesc​=2πρ0​. The natural additional condition is WKB quantization of the filling action.
+For an ordinary sector: Sesc=2πnS_\text{esc} = 2\pi n
+Sesc​=2πn. But this is the *spinorial* sector — the Z2\mathbb{Z}_2
+Z2​ holonomy already contributes a Berry phase of π\pi
+π. The spinorial Bohr-Sommerfeld condition is therefore half-integer:
+Sesc=(2n+1)π,n∈Z≥0S_\text{esc} = (2n+1)\pi, \qquad n \in \mathbb{Z}_{\geq 0}Sesc​=(2n+1)π,n∈Z≥0​
+For the minimal defect n=0n = 0
+n=0:
+2πρ0=π  ⟹  ρ0=122\pi\rho_0 = \pi \implies \rho_0 = \frac{1}{2}2πρ0​=π⟹ρ0​=21​
+Everything now closes:
+m=2ρ0=4=2,ℓcore=π22m = \sqrt{\frac{2}{\rho_0}} = \sqrt{4} = 2, \qquad \ell_\text{core} = \frac{\pi}{2\sqrt{2}}m=ρ0​2​​=4​=2,ℓcore​=22​π​
+Check: m ℓcore=2⋅π22=π2m\,\ell_\text{core} = 2\cdot\frac{\pi}{2\sqrt{2}} = \frac{\pi}{\sqrt{2}}
+mℓcore​=2⋅22​π​=2​π​ ✓

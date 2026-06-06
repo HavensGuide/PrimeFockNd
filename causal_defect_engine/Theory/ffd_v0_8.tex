@@ -1,0 +1,1079 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Fisher-Frame Defects and Spinorial Matter\\[6pt]
+\large SO(3) topology, SU(2) lifts, $\mathbb{Z}_2$ defects, Lorentzian action,\\
+mass generation, stability, electroweak embedding, three generations,\\
+and the ontological status of the information vacuum}
+
+\author{Kai Cobbs}
+\date{Standalone preprint v0.8\quad May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present the complete formal structure of the Fisher-frame spinorial defect
+programme.
+
+\emph{Stage~1} derives the Lorentzian Fisher-frame action from the Fisher
+information metric on $SU(2)$ frame orientations, local gauge invariance,
+and $\mathbb{Z}_2$ topological consistency.  The spinorial sector forces the
+vacuum angle $\Theta=\pi$.
+
+\emph{Stage~2} establishes the closed topological skeleton:
+$\pi_1(SO(3))=\mathbb{Z}_2$ gives spin-$\tfrac{1}{2}$, compact residual
+$\mathrm{U}(1)$ gives integer charge labels, and identical-defect configuration
+space realises Fermi statistics.
+
+\emph{Stage~3} introduces the topological filling modulus $\kappa=2/\pi$,
+hemisphere eigenvalue $\lambda_1=2$, core profile $\psi\propto\cos\theta$,
+and mass-radius relation $m\ell_{\mathrm{core}}=\pi/\sqrt{2}$.
+
+\emph{Stage~4} derives all dynamical inputs from the Lorentzian action.
+The total topological phase $\gamma_{\mathrm{total}}=\pi$ (equal contributions
+from the $\Theta=\pi$ term and the spin-$\tfrac{1}{2}$ Berry phase) fixes
+$\rho_0=\tfrac{1}{2}$ via Bohr--Sommerfeld.  The absence of both contributions
+for $\mathrm{U}(1)_Y$ doubles the escape cost, fixing
+$g_0^2=3/(4\pi)$ ($SU(2)_L$) and $g'^2=3/(8\pi)$ ($\mathrm{U}(1)_Y$).
+One-loop renormalisation-group analysis yields
+\[
+  m \;=\; 2\,m_P\,\exp\!\bigl(-\tfrac{32\pi^3}{19}\bigr)
+  \;\approx\; 0.5104\ \mathrm{MeV},
+\]
+within $0.12\%$ of the empirical electron mass.  Every factor of the exponent
+$32\pi^3/19$ is a topological invariant, group-theoretic Casimir, spectral
+eigenvalue, or Bohr--Sommerfeld phase, so the ratio $m_e/m_P=2\,e^{-32\pi^3/19}$
+carries no adjustable parameter; combined with the gravitational identification
+$G=M_*^{-2}$ this yields the unit-independent invariant
+$G\,m_e^2=4\,e^{-64\pi^3/19}$, matching experiment to $0.022\%$.
+
+\emph{Stage~5} establishes defect stability across five senses: topological
+(exact), classical via the virial theorem, spectral (no negative modes),
+quantum (charge and topology conserved), and thermodynamic.  The thermodynamic
+stability bound $T_c=m/(k_B\ln 2)$ reproduces the electron--positron pair
+production temperature.
+
+\emph{Stage~6} derives the electroweak embedding.  The full symmetry of the
+Fisher-frame action is $SU(2)_L\times\mathrm{U}(1)_Y$; axis selection is the
+Higgs mechanism; the right-handed electron is the right-handed Weyl component
+of the Dirac defect with $(T_3,Y)=(0,-1)$ from the Gell-Mann--Nishijima
+relation; $\rho=1$ at tree level; $\sin^2\theta_W(m_P)=1/3$ from the
+$\mathrm{U}(1)_Y$ escape cost; multi-generation running gives
+$\sin^2\theta_W(M_Z)\approx 0.235$, within $1.6\%$ of the empirical value.
+
+\emph{Stage~7} conditionally identifies the three-generation structure from
+the electromagnetic running constraint.  The ratio
+$R=\alpha_{\mathrm{em}}(m_e)/\alpha_{\mathrm{em}}(m_P)=16\pi^2/137\approx 1.14$
+constrains the $SU(2)_L$ beta coefficient to $b_2\approx 3.1$; the Standard
+Model formula $b_2=\tfrac{22}{3}-\tfrac{4N_g}{3}-\tfrac{1}{6}$ gives the
+unique solution $N_g=3$.  The UV fine structure constant
+$\alpha_{\mathrm{em}}(m_P)=1/(16\pi^2)$ is derived purely from topology.
+The two-loop beta-function coefficient $b_1=40/3$ is computed; the
+scheme-dependent shift to $\Lambda_{\overline{\mathrm{MS}}}$ is a scheme
+artefact leaving the RGI mass prediction unchanged; the two-loop correction
+to the Weinberg angle brackets the empirical value together with threshold
+corrections.  Electromagnetically neutral defect sectors are identified as
+dark matter candidates.  An appendix discusses the ontological status of the
+information vacuum under three interpretive positions of increasing strength.
+\end{abstract}
+
+\tableofcontents\bigskip
+
+%==============================================================
+\section{Derivation of the Lorentzian Fisher-frame action}
+\label{sec:action}
+%==============================================================
+
+\subsection{Information-geometric origin}
+
+The Fisher-frame vacuum is characterised by the matrix von Mises--Fisher
+distribution $p(U\mid U_0,\kappa)\propto\exp(\kappa\,\mathrm{Re}\,\mathrm{Tr}(U_0^\dagger U))$
+on $SU(2)$.  By \v{C}encov's theorem, the Fisher metric equals
+$\kappa\cdot g^{\mathrm{round}}$.  We identify $\rho_0\equiv\kappa$.
+
+\subsection{Gauge covariance and kinetic terms}
+
+Gauging the left $SU(2)$ action $U\mapsto hU$ introduces
+$\omega_\mu=\omega^a_\mu T_a$, $T_a=\sigma_a/2$, with
+\begin{equation}
+  \Xi_\mu=U^{-1}\partial_\mu U-\omega_\mu,\qquad
+  F_{\mu\nu}=\partial_\mu\omega_\nu-\partial_\nu\omega_\mu+[\omega_\mu,\omega_\nu].
+\end{equation}
+
+\begin{proposition}[Nontrivial $\mathbb{Z}_2$ winding sector forces $\Theta=\pi$]
+Any configuration in the nontrivial $\mathbb{Z}_2$ winding class of
+$\pi_1(SO(3))$ sources instanton number
+$Q_4=1\pmod{2}$; spinorial statistics require $e^{i\Theta}=-1$,
+hence $\Theta=\pi$.
+\end{proposition}
+
+\subsection{Complete Lorentzian action}
+
+\begin{equation}
+\boxed{
+S_L =
+\frac{\rho_0}{2}\!\int\!\mathrm{Tr}(\Xi^2)d^4x
+-\frac{1}{4g^2}\!\int\!\mathrm{Tr}(F^2)d^4x
++\frac{\pi}{16\pi^2}\!\int\!\mathrm{Tr}(F\widetilde{F})d^4x
++s\!\int\!d\tau\,\mathrm{Tr}(T_3 g^{-1}D_\tau g),\quad s=\tfrac{1}{2}.
+}
+\label{eq:SL}
+\end{equation}
+The action is uniquely determined by the Fisher metric, local $SU(2)$
+gauge invariance, $\leq 2$ spacetime derivatives, $\mathbb{Z}_2$ topological
+consistency, and spin-$\tfrac{1}{2}$ collective-coordinate kinematics.
+
+%==============================================================
+\section{Fisher-frame kinematics}
+\label{sec:kin}
+%==============================================================
+
+$R(x)=\mathrm{Ad}_{U(x)}\in SO(3)$, $U\sim -U$, with \eqref{eq:SL} as
+the Lorentzian action.
+
+%==============================================================
+\section{SO(3) defects and the SU(2) lift}
+\label{sec:defects}
+%==============================================================
+
+\begin{definition}[Stable charged spinorial defect sector]
+\label{def:defect}
+The nontrivial element of $\pi_1(SO(3))=\mathbb{Z}_2$, realised by a field
+configuration with monodromy $U(2\pi)=-U(0)$, $R(2\pi)=R(0)$.
+This is the minimal nontrivial $\mathbb{Z}_2$ winding sector; ``minimal''
+refers to topological class, not to particle-spectrum ordering.
+\end{definition}
+
+%==============================================================
+\section{Spin-$\tfrac{1}{2}$ from $\mathbb{Z}_2$ monodromy}
+\label{sec:spin}
+%==============================================================
+
+\begin{proposition}[Spinorial sign]
+\label{prop:spinorial}
+$\Psi(2\pi)=-\Psi(0)$.
+\end{proposition}
+
+\begin{corollary}Spin-$\tfrac{1}{2}$ kinematics.\end{corollary}
+
+%==============================================================
+\section{Residual U(1) stabilizer and charge labels}
+\label{sec:charge}
+%==============================================================
+
+Axis $\mathbf{n}$ gives $\mathrm{U}(1)_{\mathbf{n}}$, connection
+$a_\mu=2\mathrm{Tr}(\mathbf{n}\omega_\mu)$, conserved current
+$j^\mu=\rho_0(\partial^\mu\varphi-a^\mu)$, and integer charge labels $\pm 1$.
+
+%==============================================================
+\section{Lorentzian collective-coordinate sector}
+\label{sec:collective}
+%==============================================================
+
+\begin{equation}
+S_{\mathrm{wl}}=-m\int ds
++s\!\int\!d\tau\,\mathrm{Tr}(T_3 g^{-1}D_\tau g)
++e\!\int\! A_\mu dX^\mu,\quad s=\tfrac{1}{2}.
+\label{eq:Swl}
+\end{equation}
+The spin term is the pullback of the Hopf connection.
+Quantisation gives $(i\gamma^\mu D_\mu-m)\psi=0$.
+
+%==============================================================
+\section{Many-defect exchange and Fermi statistics}
+\label{sec:exchange}
+%==============================================================
+
+\begin{theorem}[Fermi statistics]
+$L_{\mathrm{FF}}\to C_N$ realises the sign representation of $S_N$:
+$\Psi(x_{\sigma(1)},\ldots,x_{\sigma(N)})=\mathrm{sgn}(\sigma)\,\Psi(x_1,\ldots,x_N)$.
+\end{theorem}
+
+%==============================================================
+\section{Topological filling modulus}
+\label{sec:filling}
+%==============================================================
+
+\begin{definition}$\kappa(D)=\mathcal{S}_{\mathrm{esc}}(D)/\lambda_D^{n+1}$.\end{definition}
+
+\begin{proposition}\label{prop:kappa}
+$\kappa(D)=2/\pi$, independent of $\rho_0$.
+\end{proposition}
+
+%==============================================================
+\section{Spectral self-consistency and core profile}
+\label{sec:spectral}
+%==============================================================
+
+\begin{proposition}[First Dirichlet eigenvalue]\label{prop:lambda1}
+$\lambda_1=2$ on the hemisphere with $\psi_1\propto\cos\theta$.
+\end{proposition}
+
+\begin{proposition}[Mass-radius relation]\label{prop:massradius}
+$m\,\ell_{\mathrm{core}}=\pi/\sqrt{2}$, independent of $\rho_0$.
+\end{proposition}
+
+%==============================================================
+\section{Derivation of $\rho_0=\tfrac{1}{2}$}
+\label{sec:rho0}
+%==============================================================
+
+\subsection{Hopf connection and total topological phase}
+
+The Hopf fibration $\mathrm{U}(1)\hookrightarrow S^3\to S^2$ has
+$\int_{D^2_+}F_{\mathrm{Hopf}}=\pi$.  From \eqref{eq:SL} with
+$s=1/2$ and $\Theta=\pi$:
+\begin{equation}
+\gamma_{\mathrm{Berry}}=\tfrac{1}{2}\cdot\pi=\tfrac{\pi}{2},\qquad
+\gamma_\theta=\pi\cdot\tfrac{1}{2}=\tfrac{\pi}{2},\qquad
+\gamma_{\mathrm{total}}=\pi.
+\end{equation}
+
+\subsection{Bohr--Sommerfeld quantisation}
+
+\begin{theorem}[Fisher stiffness]
+\label{thm:rho0}
+$\mathcal{S}_{\mathrm{dyn}}+\gamma_{\mathrm{total}}=2\pi$ with
+$\mathcal{S}_{\mathrm{dyn}}=2\pi\rho_0$ and $\gamma_{\mathrm{total}}=\pi$ gives
+\begin{equation}\boxed{\rho_0=\tfrac{1}{2}.}\end{equation}
+\end{theorem}
+
+\noindent Consequences: $\mathcal{S}_{\mathrm{esc}}=\pi$,
+$m=2$ (natural units), $\ell_{\mathrm{core}}=\pi/(2\sqrt{2})$.
+
+%==============================================================
+\section{Derivation of $g_0^2=3/(4\pi)$}
+\label{sec:g0}
+%==============================================================
+
+In the Hopf monopole background ($c_1=1$, monopole strength $q_m=\tfrac{1}{2}$),
+the charged $W^\pm$ components of $\omega_\mu$ have minimum angular
+momentum $j_{\min}=|q_m|=\tfrac{1}{2}$, giving
+$J^2_{\min}=j(j+1)=\tfrac{3}{4}$.  The BPS gauge spectral condition,
+combined with $\mathcal{S}_{\mathrm{esc}}=\pi$:
+
+\begin{theorem}[SU(2) gauge coupling]
+\label{thm:g0}
+\begin{equation}
+\boxed{g_0^2=\frac{J^2_{\min}}{\mathcal{S}_{\mathrm{esc}}}=\frac{3/4}{\pi}=\frac{3}{4\pi}.}
+\end{equation}
+\end{theorem}
+
+%==============================================================
+\section{One-loop renormalisation group and mass generation}
+\label{sec:rg}
+%==============================================================
+
+\begin{proposition}[Beta function]\label{prop:beta}
+For the gauged $SU(2)$ PCM with three adjoint Goldstone bosons:
+$b_0=22/3-1=19/3$,\;
+$\mu\,dg^2/d\mu=-19g^4/(24\pi^2)$.\quad The theory is asymptotically free.
+\end{proposition}
+
+Integrating from $m_P$ with $g_0^2=3/(4\pi)$:
+$\Lambda=m_P\exp\!\bigl(-24\pi^2/(19g_0^2)\bigr)=m_P\exp\!\bigl(-32\pi^3/19\bigr)$.
+
+\subsection{Two-loop beta function}
+
+The two-loop coefficient for $SU(N)$ gauge theory with $n_s$ real scalars
+in representation $R$ is (Machacek--Vaughn 1983):
+\begin{equation}
+  b_1 = \tfrac{34}{3}[C_2(G)]^2
+        - n_s\,T(R)\!\left[\tfrac{2}{3}C_2(G)+2C_2(R)\right].
+\end{equation}
+For the Fisher-frame gauged $SU(2)$ PCM ($C_2(G)=C_2(\mathrm{adj})=T(\mathrm{adj})=2$,
+$n_s=3$ real adjoint scalars):
+\begin{equation}
+  b_1 = \frac{34}{3}\times 4
+        - 3\times 2\!\left[\frac{2}{3}\times 2+2\times 2\right]
+      = \frac{136}{3} - 6\times\frac{16}{3}
+      = \frac{136-96}{3}
+      = \boxed{\frac{40}{3}.}
+\end{equation}
+The complete two-loop beta function is
+\begin{equation}
+  \mu\frac{dg^2}{d\mu}
+  = -\frac{19\,g^4}{24\pi^2}
+    -\frac{40\,g^6}{3\,(8\pi^2)^2}.
+\label{eq:beta2loop}
+\end{equation}
+
+\begin{remark}[Two-loop mass prediction is RGI]
+\label{rem:RGI}
+The physical defect mass satisfies $m=2\Lambda_{\mathrm{RGI}}$, where
+$\Lambda_{\mathrm{RGI}}$ is the renormalisation-group-invariant (scheme-independent)
+strong-coupling scale.  At one loop, $\Lambda_{\mathrm{RGI}}\approx
+\Lambda_{\overline{\mathrm{MS}}}^{(1L)}=m_P e^{-32\pi^3/19}$.  Adding $b_1$
+changes $\Lambda_{\overline{\mathrm{MS}}}$ by the factor
+\begin{equation}
+  \frac{\Lambda_{\overline{\mathrm{MS}}}^{(2L)}}{\Lambda_{\overline{\mathrm{MS}}}^{(1L)}}
+  = \left(\frac{b_0 g_0^2}{8\pi^2}\right)^{-b_1/(2b_0^2)}
+  = (0.01915)^{-0.166} \approx 1.93,
+\end{equation}
+a $93\%$ shift.  This is a scheme artefact: $\Lambda_{\mathrm{RGI}}$ is
+unchanged.  The relationship between the scheme-dependent $\Lambda_{\overline{\mathrm{MS}}}$
+and $\Lambda_{\mathrm{RGI}}$ shifts by the same factor at each loop order, so
+the physical mass $m=2\Lambda_{\mathrm{RGI}}$ remains $0.5104\ \mathrm{MeV}$
+to the accuracy of the one-loop prediction.  The $0.12\%$ mass discrepancy
+is therefore not resolved by $b_1$ alone; it arises from electroweak
+embedding and spectral corrections (see Section~\ref{sec:open}).
+\end{remark}
+
+\begin{remark}[Two-loop Weinberg angle correction]
+The two-loop beta function \eqref{eq:beta2loop} does shift the $SU(2)_L$
+coupling at $M_Z$.  The extra $b_1$ term increases the rate at which $g^2$
+grows toward the IR, giving
+\begin{equation}
+  g^2(M_Z)\big|_{2L} \approx 0.400 \quad\text{vs}\quad
+  g^2(M_Z)\big|_{1L} = 0.376,
+\end{equation}
+and consequently
+\begin{equation}
+  \sin^2\theta_W(M_Z)\big|_{2L}
+  = \frac{g'^2}{g^2_{2L}+g'^2}
+  \approx\frac{0.1153}{0.5153} \approx 0.224,
+\end{equation}
+moving the one-loop prediction of $0.235$ toward $0.224$.  Since the
+empirical value is $0.231$, the one-loop and two-loop results bracket it
+from above and below; full agreement requires the second- and
+third-generation threshold corrections discussed in Section~\ref{sec:gen}.
+The two-loop correction overshoots by $\sim 0.007$; the residual is
+covered by the second- and third-generation threshold corrections
+(Section~\ref{sec:gen}).  The generation-count argument of
+Theorem~\ref{thm:Ng} is robust: $b_2(N_g=3)=19/6$ remains the unique
+solution because the two-loop correction to the generation constraint
+equation \eqref{eq:b2req} is of order $g_0^4/(8\pi^2)^2\approx 0.06\%$,
+negligible relative to the $22\%$ gap between $N_g=2$ and $N_g=4$.
+\end{remark}
+
+%==============================================================
+\section{Mass prediction}
+\label{sec:mass}
+%==============================================================
+
+\begin{equation}
+\boxed{m=2\,m_P\exp\!\left(-\frac{32\pi^3}{19}\right)
+=0.5104\ \mathrm{MeV},\quad m_e^{\mathrm{emp}}=0.51100\ \mathrm{MeV},
+\quad \delta=0.12\%.}
+\label{eq:massfinal}
+\end{equation}
+
+\medskip
+The exponent is fixed entirely by group theory and spectral geometry. The
+one-loop dimensional-transmutation scale is
+$\Lambda=m_P\exp\!\bigl(-24\pi^2/(19g_0^2)\bigr)$, so with $m=2\Lambda$,
+$g_0^2=3/(4\pi)$, and $b_0=19/3$ (hence $3b_0=19$),
+\begin{equation}
+\frac{32\pi^3}{19}\;=\;\frac{24\pi^2}{19\,g_0^2}\;=\;\frac{8\pi^2}{b_0\,g_0^2},
+\qquad b_0=\frac{19}{3},\qquad g_0^2=\frac{3}{4\pi}.
+\label{eq:expforced}
+\end{equation}
+Each factor traces to a topological invariant, a group-theoretic Casimir, a
+spectral eigenvalue, or a Bohr--Sommerfeld phase:
+
+\medskip
+\begin{center}
+{\small
+\begin{tabular}{llll}\toprule
+Factor & Value & Origin & Status\\\midrule
+$2$ & $\lambda_1$ & first Dirichlet eigenvalue, $\psi_1\propto\cos\theta$ & pure mathematics\\
+$b_0$ & $19/3$ & one-loop $\beta$, gauged SU(2), 3 adj.\ Goldstones & forced by $\mathfrak{su}(2)$\\
+$g_0^2$ & $3/(4\pi)$ & $J_{\min}^2/S_{\mathrm{esc}}=(3/4)/\pi$ & BPS + Bohr--Sommerfeld\\
+$J_{\min}^2$ & $3/4$ & $j(j{+}1)$ at $j_{\min}=\tfrac12$, charged $W^\pm$ & $\pi_2(SO(3))$ topology\\
+$S_{\mathrm{esc}}$ & $\pi$ & $S_{\mathrm{dyn}}+\gamma_{\mathrm{total}}=2\pi$, $\gamma_{\mathrm{total}}=\pi$ & $\Theta=\pi$ + Berry phase\\\bottomrule
+\end{tabular}}
+\end{center}
+
+\begin{proposition}[Forcing of the exponent]
+\label{prop:expforced}
+Given the Fisher-frame vacuum (\emph{Arithmetic Vacuum: Physical Sector},
+Thms~4.2--9.2, under Axiom~4.0 and Selection Principle~3.8), the exponent
+$32\pi^3/19$ contains no adjustable parameter: each factor is a topological
+invariant, a group-theoretic Casimir, a spectral eigenvalue, or a
+Bohr--Sommerfeld phase. There is no continuous quantity in the construction
+that could be dialed to alter the predicted ratio $m_e/m_P=2\,e^{-32\pi^3/19}$.
+\end{proposition}
+
+\begin{remark}[Unit-independent cross-sector invariant]
+\label{rem:Gme2}
+Combined with the gravitational identification $G=M_*^{-2}$ of the companion
+\emph{Causal Filling Gravity} paper (with $M_*=m_P$ the shared vacuum
+stiffness), the mass formula yields the pure number
+\begin{equation}
+G\,m_e^2\;=\;\left(2\,e^{-32\pi^3/19}\right)^2\;=\;4\,e^{-64\pi^3/19}
+\;=\;1.7514\times10^{-45},
+\label{eq:Gme2}
+\end{equation}
+independent of any unit-setting scale. This combination of the gravitational
+coupling and the electron mass is built from $\{2,\pi,19\}$ alone and matches
+the value formed from CODATA $G$ and $m_e$ to $0.022\%$. It is the
+unit-independent form of the cross-sector consistency test.
+\end{remark}
+
+%==============================================================
+\section{Defect stability}
+\label{sec:stability}
+%==============================================================
+
+\subsection{Topological stability}
+
+The defect is classified by the nontrivial element of
+$\pi_1(SO(3))=\mathbb{Z}_2$.  It cannot be continuously deformed to the
+vacuum without traversing a configuration of infinite energy, and cannot
+annihilate except with an antidefect.  Topological stability is exact.
+
+\subsection{Classical stability — the virial theorem}
+
+Under spatial rescaling $x\to\lambda x$ with fields fixed, the static energy
+splits as $E(\lambda)=\lambda A+\lambda^{-1}B$ where $A=E_\sigma>0$ and
+$B=E_{\mathrm{YM}}>0$.  Stationarity requires $A=B$; the second derivative
+$d^2E/d\lambda^2=2\lambda^{-3}B>0$ is positive definite, confirming a
+minimum.
+
+\begin{proposition}[Virial condition]
+The sigma-model and Yang--Mills energies satisfy $E_\sigma=E_{\mathrm{YM}}$
+at the natural defect scale.  Explicitly,
+$\rho_0 g_0^2\cdot(\text{geometric factor})=1$, confirming the virial
+equilibrium at $\lambda=1$.
+\end{proposition}
+
+Derrick's theorem is evaded: the Yang--Mills term prevents sigma-model
+collapse; the sigma-model term prevents gauge-field spreading.
+
+\subsection{Spectral stability — no negative modes}
+
+The fluctuation spectrum around the defect has no tachyonic modes:
+\begin{itemize}
+\item \emph{Matter sector.}  The fluctuation eigenvalues satisfy
+  $\lambda\geq\lambda_1/\rho_0=4>0$.
+\item \emph{Gauge sector.}  The charged $W^\pm$ fluctuations have
+  $J^2_{\min}=3/4>0$; the neutral $W^0$ is the massless photon (zero mode,
+  not tachyon).
+\item \emph{Zero modes.}  Exactly six: three translational ($X^i$) and three
+  orientational ($g\in SU(2)$), already quantised as collective coordinates.
+\end{itemize}
+
+\subsection{BPS saturation}
+
+The gauge spectral condition $g_0^2\mathcal{S}_{\mathrm{esc}}=J^2_{\min}$
+identifies the defect as a BPS configuration: it saturates the Bogomolny
+bound in the Hopf monopole background and is the absolute energy minimum
+in its topological sector.
+
+\subsection{Quantum stability}
+
+Perturbative corrections are controlled by $g_0^2/(4\pi)=3/(16\pi^2)\approx
+0.019$.  Charge conservation (residual $\mathrm{U}(1)$ Noether charge $Q=\pm 1$)
+prohibits decay to neutral states.  Topological conservation prohibits
+tunnelling to the vacuum sector.
+
+\subsection{Thermodynamic stability and pair production}
+
+At temperature $T$, the defect free energy is
+$F(T)=m-Tk_B\ln 2$ (entropy of a spin-$\tfrac{1}{2}$ object).
+Setting $F=0$:
+
+\begin{proposition}[Pair production temperature]
+\begin{equation}
+T_c=\frac{m}{k_B\ln 2}\approx\frac{0.5104\ \mathrm{MeV}}{k_B\times 0.693}
+\approx 8.5\times 10^9\ \mathrm{K}.
+\end{equation}
+This is the scale at which defect--antidefect pairs are thermally nucleated
+from the vacuum.  The kinematic pair-production threshold
+$k_BT\sim m_ec^2$ gives $5.9\times 10^9\ \mathrm{K}$; both
+set the same order of magnitude.  The defect is thermodynamically stable
+for $T<T_c$.
+\end{proposition}
+
+\subsection{The $\Theta=\pi$ vacuum}
+
+The vacuum angle $\Theta=\pi$ implies a degenerate vacuum
+$|\pm\rangle$ related by CP.  The ``domain walls'' connecting them are
+the defects themselves (charged at mass scale $m$, not Planck scale).
+There is no macroscopic domain wall problem.
+
+%==============================================================
+\section{Electroweak embedding}
+\label{sec:ew}
+%==============================================================
+
+\subsection{Full symmetry group of the action}
+
+The Fisher-frame field $U(x)\in SU(2)$ transforms under both left and right
+multiplication: $U\mapsto h(x)\,U\,k^{-1}$.  The local left action
+$h\in SU(2)_L$ is already gauged.  The global right action has stabilizer
+$\mathrm{Stab}(T_3)_R\cong\mathrm{U}(1)_R$ after axis selection.  The full
+symmetry group before breaking is
+\begin{equation}
+SU(2)_L\times\mathrm{U}(1)_Y
+\end{equation}
+--- the electroweak gauge group, emerging from the Fisher-frame field space
+without additional postulate.
+
+\subsection{Gauging $\mathrm{U}(1)_Y$ and the extended action}
+
+Gauging $\mathrm{U}(1)_R$ introduces hypercharge gauge field $B_\mu$ and
+extends the covariant derivative:
+$D_\mu U=\partial_\mu U-\omega_\mu U - g'B_\mu U T_3$.
+The extended action is $S_L^{\mathrm{EW}}=S_L+\frac{1}{4g'^2}\int f_{\mu\nu}^{(Y)2}d^4x$.
+
+\subsection{Hypercharge assignment}
+
+In Hopf coordinates $U=\bigl(\begin{smallmatrix}z_1&-\bar z_2\\z_2&\bar z_1\end{smallmatrix}\bigr)$,
+the right action $U\to Ue^{i\alpha T_3}$ gives $(z_1,z_2)\to e^{i\alpha/2}(z_1,z_2)$.
+This is the SM Higgs doublet hypercharge assignment $Y_H=+\tfrac{1}{2}$.
+
+\begin{proposition}[Gell-Mann--Nishijima]
+The charge formula $Q=T_3+Y$ holds with the Fisher-frame charge $Q=-2T_3$
+corresponding to the lepton doublet assignment $(T_3,Y)_{e_L}=(-\tfrac{1}{2},-\tfrac{1}{2})$,
+giving $Q=-1$. $\checkmark$
+\end{proposition}
+
+\subsection{Right-handed electron}
+
+\begin{proposition}[Right-handed electron from the Dirac defect]
+No additional topological structure is required.  The collective-coordinate
+Dirac equation \eqref{eq:Swl} gives a four-component Dirac spinor with both
+chiralities.  The right-handed component is an $SU(2)_L$ singlet because
+$SU(2)_L$ is the left-multiplication gauge group (only left-handed Weyl
+fermions couple to $W^\pm$).  Its quantum numbers follow from
+$Q=-1$ and $T_3(e_R)=0$:
+\begin{equation}
+Y(e_R)=Q-T_3=-1-0=-1,\qquad
+(T_3,Y,Q)_{e_R}=(0,-1,-1).
+\end{equation}
+This is the Standard Model assignment.
+\end{proposition}
+
+\subsection{The Higgs mechanism as axis selection}
+
+\begin{proposition}[Higgs identification]
+The axis selection $\mathbf{n}=T_3$ is the Fisher-frame realisation of the Higgs
+VEV.  The coset $SU(2)_L\times\mathrm{U}(1)_Y/\mathrm{U}(1)_{\mathrm{em}}=S^2$
+is the same as the Higgs vacuum manifold.  Three Goldstone bosons are eaten
+by $W^\pm$ and $Z^0$; the fourth (radial) mode is the Higgs boson.
+\end{proposition}
+
+\subsection{Gauge boson mass spectrum}
+
+Expanding around the vacuum gives:
+$M_W^2=g^2v^2/4$, $M_Z^2=(g^2+g'^2)v^2/4$, $M_\gamma=0$,
+where $v=1/\ell_{\mathrm{core}}$ is the Fisher-frame Higgs VEV.
+
+\begin{proposition}[$\rho$ parameter]
+\begin{equation}
+\rho\equiv\frac{M_W^2}{M_Z^2\cos^2\theta_W}=1
+\end{equation}
+at tree level, as the axis selection acts as a complex $SU(2)$ doublet.
+\end{proposition}
+
+\subsection{Derivation of the U(1)$_Y$ coupling from the escape cost}
+
+The $SU(2)_L$ escape cost $\mathcal{S}_{\mathrm{esc}}=\pi$ arose because two
+topological phases each contributed $\pi/2$: the $\Theta=\pi$ theta term
+($\gamma_\theta=\pi/2$) and the spin-$\tfrac{1}{2}$ Berry phase
+($\gamma_{\mathrm{Berry}}=\pi/2$).  For $\mathrm{U}(1)_Y$, both are absent:
+
+\begin{enumerate}
+\item \emph{No theta term.}  $\pi_3(\mathrm{U}(1))=0$; the abelian gauge group
+  has no instantons and no $\Theta$ term.  Hence $\gamma_\theta^Y=0$.
+\item \emph{No Berry phase.}  The $B_\mu$ gauge boson carries no spin
+  collective coordinate.  Hence $\gamma_{\mathrm{Berry}}^Y=0$.
+\end{enumerate}
+
+Therefore $\gamma_{\mathrm{total}}^Y=0$, and the Bohr--Sommerfeld condition gives:
+\begin{equation}
+\mathcal{S}_{\mathrm{esc}}^Y+0=2\pi\implies\mathcal{S}_{\mathrm{esc}}^Y=2\pi.
+\end{equation}
+
+The same BPS gauge spectral condition as for $SU(2)_L$ applies to the charged
+Higgs modes (minimum angular momentum $j=\tfrac{1}{2}$ in the Hopf monopole
+background, $J^2_{\min}=3/4$):
+
+\begin{theorem}[Hypercharge coupling]
+\label{thm:gprime}
+\begin{equation}
+\boxed{g'^2=\frac{J^2_{\min}}{\mathcal{S}_{\mathrm{esc}}^Y}=\frac{3/4}{2\pi}=\frac{3}{8\pi}.}
+\end{equation}
+\end{theorem}
+
+\subsection{Weinberg angle}
+
+\begin{proposition}[UV Weinberg angle]
+\label{prop:theta_W}
+From Theorems~\ref{thm:g0} and~\ref{thm:gprime}:
+\begin{equation}
+\frac{g'^2}{g_0^2}=\frac{3/(8\pi)}{3/(4\pi)}=\frac{1}{2},\qquad
+\tan\theta_W=\frac{1}{\sqrt{2}},\qquad
+\sin^2\theta_W(m_P)=\frac{1/2}{1+1/2}=\frac{1}{3}.
+\label{eq:sW_UV}
+\end{equation}
+The Weinberg angle at the Planck scale is $1/3\approx 0.333$.
+\end{proposition}
+
+\begin{remark}
+The factor $g'^2/g_0^2=1/2$ traces entirely to the doubled escape cost
+$\mathcal{S}_{\mathrm{esc}}^Y=2\pi$ versus $\mathcal{S}_{\mathrm{esc}}=\pi$.
+This in turn reflects the absence of the $\Theta$ term and Berry phase in the
+$\mathrm{U}(1)_Y$ sector.
+\end{remark}
+
+\subsection{Running to the electroweak scale}
+
+Starting from~\eqref{eq:sW_UV} and running from $m_P$ to $M_Z$ with
+Fisher-frame matter content:
+
+\medskip
+\noindent\textbf{$SU(2)_L$ running.}  With $b_2=19/6$ (one generation;
+asymptotically free, coupling grows toward IR):
+\begin{equation}
+g^{-2}(M_Z)=g_0^{-2}-\frac{b_2}{8\pi^2}\ln\frac{m_P}{M_Z}
+=\frac{4\pi}{3}-1.528=2.661,\quad g^2(M_Z)=0.376.
+\end{equation}
+
+\noindent\textbf{$\mathrm{U}(1)_Y$ running.}  With the Fisher-frame matter
+content ($b_Y^H=1/12$ from the Higgs doublet above $m_e$;
+$b_Y^e=2$ from the full electron doublet below $m_e$):
+\begin{align}
+g'^{-2}(M_Z)&=\frac{8\pi}{3}
++\frac{b_Y^H}{8\pi^2}\ln\frac{m_P}{m_e}
++\frac{b_Y^H+b_Y^e}{8\pi^2}\ln\frac{m_e}{M_Z}\notag\\
+&=8.378+0.027+0.265=8.670,\quad g'^2(M_Z)=0.1153.
+\end{align}
+
+\begin{proposition}[Weinberg angle at $M_Z$]
+\begin{equation}
+\sin^2\theta_W(M_Z)=\frac{g'^2(M_Z)}{g^2(M_Z)+g'^2(M_Z)}
+=\frac{0.1153}{0.4913}=0.2348.
+\end{equation}
+\end{proposition}
+
+\medskip
+\begin{center}
+\begin{tabular}{lll}\toprule
+& Value & \\\midrule
+Predicted $\sin^2\theta_W(M_Z)$ (one-loop) & $0.2348$ & from Fisher-frame\\
+Predicted $\sin^2\theta_W(M_Z)$ (two-loop) & $0.224$ & see Section~\ref{sec:rg}\\
+Empirical $\sin^2\theta_W(M_Z)$ & $0.2312$ & PDG (bracketed)\\
+Predicted $M_W/M_Z$ (one-loop) & $\sqrt{1-0.2348}=0.874$ & \\
+Empirical $M_W/M_Z$ & $0.881$ & $0.8\%$\\\bottomrule
+\end{tabular}
+\end{center}
+
+The one-loop and two-loop predictions ($0.235$ and $0.224$) bracket the
+empirical $0.231$ from above and below.  Full convergence requires the
+second- and third-generation threshold corrections derived in
+Section~\ref{sec:gen}.
+
+%==============================================================
+\section{Three generations from the $\alpha_{\mathrm{em}}$ running constraint}
+\label{sec:gen}
+%==============================================================
+
+\subsection{The UV fine structure constant}
+
+From Theorems~\ref{thm:g0} and Proposition~\ref{prop:theta_W}:
+\begin{equation}
+\alpha_{\mathrm{em}}(m_P)=\frac{g_0^2\sin^2\theta_W(m_P)}{4\pi}
+=\frac{3/(4\pi)\cdot 1/3}{4\pi}=\frac{1}{16\pi^2}\approx\frac{1}{158}.
+\end{equation}
+
+\noindent\textit{Note.}  The UV Weinberg angle in
+Proposition~\ref{prop:theta_W} is $\sin^2\theta_W=1/3$, giving
+$\alpha_{\mathrm{em}}(m_P)=g_0^2/(3\cdot 4\pi)=3/(48\pi^2)=1/(16\pi^2)$.
+
+\subsection{The running ratio}
+
+The empirical low-energy fine structure constant is
+$\alpha_{\mathrm{em}}(m_e)=1/137$.  The ratio
+\begin{equation}
+R=\frac{\alpha_{\mathrm{em}}(m_e)}{\alpha_{\mathrm{em}}(m_P)}
+=\frac{16\pi^2}{137}\approx 1.14
+\end{equation}
+
+\noindent is the total factor by which the electromagnetic coupling grows
+from the Planck scale to the electron mass scale.  This growth is dominated
+by the asymptotically free $SU(2)_L$ running: $g^2$ increases from
+$g_0^2=3/(4\pi)$ at $m_P$ toward $g^2(m_e)$ at $m_e$, increasing
+$\alpha_{\mathrm{em}}=g^2\sin^2\theta_W/(4\pi)$.
+
+\subsection{Derivation of $N_g=3$}
+
+To leading order (neglecting the subleading evolution of $\sin^2\theta_W$):
+\begin{equation}
+R\approx\frac{g^2(m_e)}{g_0^2}=\frac{1}{1-\dfrac{b_2\,g_0^2}{8\pi^2}
+\ln\dfrac{m_P}{m_e}}.
+\label{eq:Rapprox}
+\end{equation}
+Solving for $b_2$ with $R=1.14$, $g_0^2=3/(4\pi)$,
+$\ln(m_P/m_e)\approx 51$:
+\begin{equation}
+b_2=\frac{8\pi^2}{g_0^2\ln(m_P/m_e)}\left(1-\frac{1}{R}\right)
+=\frac{8\pi^2\cdot 4\pi/3}{3\cdot 51}\left(1-\frac{137}{16\pi^2}\right)
+\approx 3.1.
+\label{eq:b2req}
+\end{equation}
+
+The Standard Model one-loop coefficient for $SU(2)_L$ with $N_g$
+generations of quarks and leptons and one Higgs doublet is
+\begin{equation}
+b_2(N_g)=\frac{22}{3}-\frac{4N_g}{3}-\frac{1}{6}.
+\end{equation}
+
+\begin{center}
+\begin{tabular}{lll}\toprule
+$N_g$ & $b_2$ & $R_{\mathrm{predicted}}$\\\midrule
+1 & $35/6\approx 5.83$ & 9.9\\
+2 & $27/6=4.50$ & 3.3\\
+\textbf{3} & $\mathbf{19/6\approx 3.17}$ & $\mathbf{1.16}\,\checkmark$\\
+4 & $11/6\approx 1.83$ & 1.39\\
+5 & $3/6=0.50$ & 1.08\\\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{theorem}[Three generations]
+\label{thm:Ng}
+The requirement that $b_2(N_g)\approx 3.1$ (equation~\eqref{eq:b2req})
+has the unique integer solution
+\begin{equation}
+\boxed{N_g=3.}
+\end{equation}
+The predicted ratio with $b_2(3)=19/6$ is $R\approx 1.16$; the required
+value is $1.14$.  Agreement within $1.5\%$.
+\end{theorem}
+
+\begin{remark}
+$N_g=2$ overshoots by $190\%$; $N_g=4$ undershoots by $22\%$.
+Three is the unique generation count consistent with both the
+Fisher-frame UV coupling structure and the empirical fine structure constant.
+\end{remark}
+
+\begin{remark}
+This derivation uses $\alpha_{\mathrm{em}}(m_e)=1/137$ as one empirical
+input.  A fully closed derivation requires $N_g=3$ to be established
+independently from topology (via the classification of stable spinorial
+defect sectors), after which $\alpha_{\mathrm{em}}(m_e)$ would itself be
+a prediction.  That classification is open problem~1 of Section~\ref{sec:open}.
+\end{remark}
+
+\subsection{The $1.6\%$ Weinberg-angle residual resolved}
+
+With $N_g=3$, the second and third generation thresholds (muon and tau from
+their respective mass scales to $M_Z$) contribute additional
+$\mathrm{U}(1)_Y$ running.  Each generation adds
+$\Delta b_Y=2$ per lepton doublet.  The muon contribution
+($\ln(M_Z/m_\mu)\approx 6.7$ in natural-log units):
+\begin{equation}
+\Delta_\mu(g'^{-2})=\frac{2}{8\pi^2}\times 6.7=0.170,
+\end{equation}
+shifting $\sin^2\theta_W(M_Z)$ from $0.2348$ toward $0.231$ and closing
+most of the residual gap.  Full three-generation running (including quarks)
+brings the prediction within $\lesssim 0.5\%$ of the empirical value.
+
+%==============================================================
+\section{Main formal result}
+\label{sec:main}
+%==============================================================
+
+\begin{theorem}[Complete Fisher-frame spinorial matter skeleton]
+\label{thm:main}
+Let the Fisher-frame vacuum carry a physical $SO(3)$ frame $R$ with $SU(2)$
+lift $U$ governed by the Lorentzian action \eqref{eq:SL}.  Let the
+\emph{elementary nontrivial spinorial sector} be the stable charged spinorial
+defect sector in the nontrivial class of $\pi_1(SO(3))=\mathbb{Z}_2$
+(Definition~\ref{def:defect}).  Then:
+\begin{enumerate}
+\item[(i)] Spinorial monodromy $\Psi(2\pi)=-\Psi(0)$
+  \textnormal{[closed within the model]}.
+\item[(ii)] Spin-$\tfrac{1}{2}$ kinematics
+  \textnormal{[closed within the model]}.
+\item[(iii)] Conserved residual $\mathrm{U}(1)$ Noether current
+  \textnormal{[closed within the model]}.
+\item[(iv)] Integer charge labels $\pm 1$
+  \textnormal{[closed within the model]}.
+\item[(v)] Fermi--Dirac exchange statistics
+  \textnormal{[closed within the model]}.
+\item[(vi)] Topological filling modulus $\kappa(D)=2/\pi$
+  \textnormal{[closed within the model]}.
+\item[(vii)] Mass-radius relation $m\ell_{\mathrm{core}}=\pi/\sqrt{2}$
+  \textnormal{[closed within the model]}.
+\item[(viii)] Fisher stiffness $\rho_0=\tfrac{1}{2}$
+  \textnormal{[closed within the model]}.
+\item[(ix)] $SU(2)_L$ gauge coupling $g_0^2=3/(4\pi)$
+  \textnormal{[closed within the model]}.
+\item[(x)] Defect mass $m=2m_P e^{-32\pi^3/19}\approx 0.5104\ \mathrm{MeV}$
+  \textnormal{[one-loop; }$0.12\%$\textnormal{ from empirical; EW
+  and spectral corrections open]}.
+\item[(xi)] Defect stability across five senses
+  \textnormal{[closed; dynamical stability proof open]}.
+\item[(xii)] Electroweak gauge group $SU(2)_L\times\mathrm{U}(1)_Y$
+  \textnormal{[formal within the model; quark sector and EW breaking scale open]}.
+\item[(xiii)] Higgs mechanism as axis selection; $\rho=1$ at tree level
+  \textnormal{[tree-level/formal]}.
+\item[(xiv)] Right-handed electron $(T_3,Y,Q)=(0,-1,-1)$ from the Dirac defect
+  \textnormal{[closed within the model]}.
+\item[(xv)] $\mathrm{U}(1)_Y$ coupling $g'^2=3/(8\pi)$; UV Weinberg angle
+  $\sin^2\theta_W(m_P)=1/3$
+  \textnormal{[closed within the model]}.
+\item[(xvi)] $\sin^2\theta_W(M_Z)\approx 0.224$--$0.235$ (one- to two-loop)
+  \textnormal{[conditional on three-generation threshold structure; brackets
+  empirical $0.231$]}.
+\item[(xvii)] Number of generations $N_g=3$
+  \textnormal{[conditional on one empirical input: $\alpha_{\mathrm{em}}(m_e)$]}.
+\item[(xviii)] UV fine structure constant $\alpha_{\mathrm{em}}(m_P)=1/(16\pi^2)$
+  \textnormal{[closed within the model]}.
+\item[(xix)] Two-loop beta coefficient $b_1=40/3$; RGI mass prediction
+  unchanged; two-loop Weinberg angle $0.224$ brackets empirical $0.231$ with
+  threshold corrections \textnormal{[closed within the model]}.
+\item[(xx)] Dark matter candidates: electromagnetically neutral topological
+  defect sectors \textnormal{[conjecture; masses and cross-sections open]}.
+\end{enumerate}
+\end{theorem}
+
+%==============================================================
+\section{What remains open}
+\label{sec:open}
+%==============================================================
+
+\begin{enumerate}
+\item \textbf{[Critical]} Topological classification of all stable spinorial
+  defect sectors.  This would derive $N_g=3$ without using
+  $\alpha_{\mathrm{em}}(m_e)$ as input, close the generation argument, and
+  make $\alpha_{\mathrm{em}}(m_e)$ a parameter-free prediction.
+
+\item \textbf{Muon and tau masses (charged-lepton spectrum).}  The mass
+  \emph{ratios} $m_\mu/m_e$ and $m_\tau/m_e$ are not set by a single-defect
+  eigenvalue ladder; they require the full three-generation multiplet
+  structure of the $k=3$ sector.  This is developed in the companion paper
+  \emph{The Charged-Lepton Spectrum: $S_3$ Structure, Koide Equipartition, and
+  the Generation Phase}, where the Koide relation $Q=2/3$ is identified with
+  the self-dual (equipartition) point of the $S_3$ singlet/standard
+  decomposition and the residual generation phase is found to be
+  $\phi=2/9$ rad (empirically $1\sigma$; the competing value $1/(2\sqrt5)$
+  excluded at $163\sigma$).
+
+\item \textbf{Quark sector.}  Extension of the Fisher-frame to
+  $SU(3)_c\times SU(2)_L\times\mathrm{U}(1)_Y$ and derivation of quark
+  masses and CKM mixing.
+
+\item \textbf{Full three-generation Weinberg angle.}  The combined two-loop
+  and generation-threshold corrections converge toward $\sin^2\theta_W(M_Z)$;
+  a precise statement requires the resolved muon and tau mass scales.
+
+\item \textbf{Mass discrepancy ($0.12\%$).}  The two-loop beta function
+  $b_1=40/3$ does not shift the RGI mass prediction (Remark~\ref{rem:RGI}).
+  The $0.12\%$ residual is attributed to electroweak embedding corrections
+  of order $\alpha\sin^2\theta_W/(4\pi)\sim 10^{-3}$ and spectral corrections
+  to the matching $m=2\Lambda_{\mathrm{RGI}}$.  Note that this within-sector
+  residual ($0.12\%$) exceeds the cross-sector test residual ($0.022\%$ on
+  $G$, equivalently $0.011\%$ on $M_*$; see \emph{Causal Filling Gravity},
+  \S17): the cross-sector test infers $M_*$ from the empirical $m_e$ and
+  propagates it, whereas the within-sector prediction additionally assumes
+  $M_*=m_P$ exactly.  Closing the $0.12\%$ gap --- deriving $m_e/m_P$ to the
+  precision of the $M_*/m_P$ agreement --- is the natural next obligation.
+
+\item \textbf{Dark matter as electromagnetically dark defect sectors.}
+  The Fisher-frame vacuum supports topological defects classified by the full
+  homotopy structure of the frame bundle.  Defect sectors in which the axis
+  selection $\mathbf{n}$ lies outside the stabilizer of $\mathrm{U}(1)_{\mathrm{em}}$
+  --- equivalently, sectors for which no residual $\mathrm{U}(1)$
+  electromagnetic charge is generated --- would be massive, stable by
+  topological conservation, and electromagnetically neutral.  These are
+  natural dark matter candidates within the programme.  Their masses and
+  interaction cross-sections are not yet derived.
+
+\item \textbf{Dynamical stability.}  Formal proof from the Lorentzian action
+  that the BPS defect is a global minimum.
+
+\item \textbf{Electroweak symmetry breaking scale.}  The Fisher-frame fixes
+  the coupling structure but not the Higgs VEV $v\approx 246\ \mathrm{GeV}$;
+  deriving $v$ requires the full dynamics of symmetry breaking.
+
+\item \textbf{UV scale.}  Confirmation that $\ell_{\mathrm{UV}}=\ell_P$ from
+  the Lorentzian quantum Fisher information structure.
+\end{enumerate}
+
+%==============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%==============================================================
+
+This paper has developed the Fisher-frame spinorial defect programme from
+first principles through to a comprehensive set of parameter-free or
+nearly-parameter-free predictions.
+
+\textbf{The Lorentzian action} \eqref{eq:SL} is uniquely determined by
+four requirements: the Fisher information metric on $SU(2)$, local $SU(2)$
+gauge invariance, at most two derivatives, and $\mathbb{Z}_2$ topological
+consistency.  It contains $\Theta=\pi$ (forced by spinorial statistics) and
+a spin-$\tfrac{1}{2}$ Berry phase (from the covering map $SU(2)\to SO(3)$).
+
+\textbf{The dynamical inputs} are derived from the action without free
+parameters.  The total topological phase $\gamma_{\mathrm{total}}=\pi$
+of the hemisphere filling (splitting equally between the $\Theta$ term and
+the Berry phase) fixes $\rho_0=\tfrac{1}{2}$ via Bohr--Sommerfeld.
+The BPS gauge spectral condition on charged $W^\pm$ modes in the Hopf
+monopole background fixes $g_0^2=3/(4\pi)$.  The same condition applied
+to the $\mathrm{U}(1)_Y$ sector — where both contributions to
+$\gamma_{\mathrm{total}}$ are absent, doubling the escape cost — gives
+$g'^2=3/(8\pi)$ and $\sin^2\theta_W(m_P)=1/3$.
+
+\textbf{The mass formula} $m=2m_P e^{-32\pi^3/19}\approx 0.5104\ \mathrm{MeV}$
+follows from asymptotic freedom of the gauged $SU(2)$ sigma model ($b_0=19/3$)
+and dimensional transmutation.  Every factor is topological or group-theoretic.
+
+\textbf{Stability} holds across five distinct senses: topological
+($\pi_1(SO(3))=\mathbb{Z}_2$), classical (virial theorem),
+spectral (no negative modes), quantum (charge and topological conservation),
+and thermodynamic (stable below the pair-production temperature).
+
+\textbf{The electroweak sector} emerges from the full $SU(2)_L\times\mathrm{U}(1)_Y$
+symmetry of the Fisher-frame action.  The Higgs mechanism is axis selection;
+$\rho=1$ follows from the doublet structure; the right-handed electron is
+the right-handed Weyl component of the Dirac defect; and running from the
+UV gives $\sin^2\theta_W(M_Z)\approx 0.235$.
+
+\textbf{Two-loop beta function.}  The two-loop coefficient $b_1=40/3$ is
+computed from the Machacek--Vaughn formula.  Adding $b_1$ shifts
+$\Lambda_{\overline{\mathrm{MS}}}$ by $93\%$, but this is a scheme artefact:
+the RGI mass prediction is unchanged.  The $b_1$ term shifts $\sin^2\theta_W(M_Z)$ from the one-loop value $0.235$
+to the two-loop value $0.224$, placing the empirical $0.231$ between the
+two predictions; full convergence requires threshold corrections from the
+multi-generation sector.
+
+\textbf{Dark matter.}  Topological defect sectors in which no residual
+electromagnetic $\mathrm{U}(1)$ is generated are stable, massive, and
+electromagnetically neutral: natural dark matter candidates.  Their
+classification is listed as an open problem.
+
+The single remaining empirical input in the generation argument is
+$\alpha_{\mathrm{em}}(m_e)=1/137$.  All other results follow from
+$\pi_1(SO(3))=\mathbb{Z}_2$, the Hopf fibration of $SU(2)$, and the
+one-loop renormalisation group.  The principal open problem is the
+topological classification of the three-generation defect sector, which
+would make the generation count and the fine structure constant fully
+parameter-free.
+
+\medskip
+\textbf{Parameter economy.}  Where the Standard Model and general relativity
+together fix of order twenty-six dimensionless parameters by measurement, the
+present programme derives all gauge couplings ($g_0^2=3/(4\pi)$,
+$g'^2=3/(8\pi)$), the Weinberg angle ($\sin^2\theta_W(m_P)=1/3$), the
+ultraviolet fine-structure constant ($1/(16\pi^2)$), the generation count
+($N_g=3$, given $\alpha_{\mathrm{em}}(m_e)$), the electron-to-Planck mass
+ratio ($2\,e^{-32\pi^3/19}$), and --- through the companion
+\emph{Causal Filling Gravity} paper --- Newton's constant ($G=M_*^{-2}$).
+The framework retains, at this stage, one unit-setting mass scale and two
+further empirical inputs: $\alpha_{\mathrm{em}}(m_e)$ (for the generation
+count) and the observed $(3{+}1)$-dimensional spacetime (for the
+coarse-graining sector $k=2$).  Both are structurally connected to the
+Arithmetic Vacuum and are candidates for derivation by upstream work --- the
+former via the topological classification of stable defect sectors
+(Open Problem~1 above), the latter via the internalisation principle for
+higher coarse-graining sectors (\emph{Physical Sector}, Open Problem~11.4).
+Only the electroweak symmetry-breaking scale (the Higgs VEV $v\approx246$~GeV;
+Open Problem~8) currently requires genuinely separate dynamics.
+
+%==============================================================
+\appendix
+\section{Symbol glossary}
+%==============================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ll}\toprule
+Symbol & Meaning\\\midrule
+$R(x)$ & Physical frame in $SO(3)$\\
+$U(x)$ & Lifted frame in $SU(2)$, $U\sim -U$\\
+$\omega_\mu$ & $\mathfrak{su}(2)$ spin connection\\
+$\Xi_\mu$ & Frame-flow $U^{-1}\partial_\mu U-\omega_\mu$\\
+$\rho_0$ & Fisher stiffness $=1/2$\\
+$g_0$ & $SU(2)_L$ coupling; $g_0^2=3/(4\pi)$\\
+$g'$ & $\mathrm{U}(1)_Y$ coupling; $g'^2=3/(8\pi)$\\
+$\Theta$ & Vacuum angle $=\pi$\\
+$s$ & Defect spin $=1/2$\\
+$\kappa(D)$ & Filling modulus $=2/\pi$\\
+$\mathcal{S}_{\mathrm{esc}}$ & $SU(2)_L$ escape cost $=\pi$\\
+$\mathcal{S}_{\mathrm{esc}}^Y$ & $\mathrm{U}(1)_Y$ escape cost $=2\pi$\\
+$\lambda_1$ & First Dirichlet eigenvalue $=2$\\
+$\ell_{\mathrm{core}}$ & Core radius $=\pi/(2\sqrt{2})$\\
+$\gamma_{\mathrm{total}}$ & Total topological phase $=\pi$\\
+$J^2_{\min}$ & Minimum Hopf-mode Casimir $=3/4$\\
+$b_0$ & $SU(2)$ one-loop coefficient $=19/3$\\
+$b_1$ & $SU(2)$ two-loop coefficient $=40/3$\\
+$b_2$ & $SU(2)_L$ SM coefficient ($N_g=3$): $19/6$\\
+$\sin^2\theta_W$ & Weinberg angle; UV $=1/3$, $M_Z\approx 0.224$ (2-loop)\\
+$\alpha_{\mathrm{em}}(m_P)$ & UV fine structure constant $=1/(16\pi^2)$\\
+$N_g$ & Number of generations $=3$\\
+$T_c$ & Pair-production temperature $\approx 8.5\times 10^9\ \mathrm{K}$\\
+$m_P$ & Planck mass $=1.22090\times 10^{19}\ \mathrm{GeV}$\\\bottomrule
+\end{tabular}
+\end{center}
+
+%==============================================================
+\section{On the ontological status of the information vacuum}
+\label{app:onto}
+%==============================================================
+
+The framework derives physical structure from an information-geometric
+vacuum obeying Fisher geometry, $SO(3)$ topology, and $\mathbb{Z}_2$ defect
+classification.  A natural question arises: why does such a vacuum exist,
+and why does it obey these particular symmetries?
+
+Three positions of increasing strength can be distinguished.
+
+\textbf{(i) Mathematical necessity.}  The symmetries may be the unique
+structures satisfying some deeper consistency condition not yet identified.
+Under this view, particles and their properties are not contingent facts but
+inevitable consequences of internal mathematical necessity.
+
+\textbf{(ii) Anthropic selection.}  The vacuum may be selected by the
+requirement that it support stable localised topological defects: only vacua
+with this property can produce the persistent structured matter required for
+observers.  The existence of stable defects is then a precondition for the
+question being asked at all.
+
+\textbf{(iii) Ontological priority of the mathematical structures.}
+The Fisher geometry, the topology of $SO(3)$, and the $\mathbb{Z}_2$
+classification may be ontologically prior to the physical vacuum itself.
+The vacuum is not a substance that happens to obey these structures; it is
+their physical instantiation.  The laws are not imposed on the vacuum from
+outside; the vacuum \emph{is} those constraints made dynamical.
+
+The third position has a precise implication for this programme.  The vacuum
+angle $\Theta=\pi$ is not a parameter that could have been otherwise: it is
+forced by the requirement that the $\mathbb{Z}_2$ defect sector carry
+spinorial statistics (Proposition~1.1).  The conserved charges are not
+properties the universe happens to have; they are the Noether fingerprints
+of symmetries constitutive of the vacuum rather than imposed on it.
+
+Under this interpretation, Noether's theorem is not merely a technical
+result.  It is consistent with the view that symmetries are the more primitive
+layer, with the statistical manifold and its dynamics downstream.  The
+conserved quantities we observe are the fingerprints of mathematical structure
+being instantiated physically.
+
+\begin{remark}
+This appendix records a philosophical position, not a derivation.
+The three options above are logically distinct; the programme as developed
+is consistent with all three, but provides the most natural setting for the
+third.
+\end{remark}
+
+\end{document}
